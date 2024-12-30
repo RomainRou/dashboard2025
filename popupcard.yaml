@@ -111,17 +111,17 @@
                       background: none;
                       }
                       
-              - type: custom:decluttering-card
+              - type: custom:decluttering-card #template carte controle groupe volets
                 template: template_cover_chip_card
                 variables:
-                  - cover: cover.volets_maison
-                  - cover_group: cover.volets_maison
-              - type: custom:decluttering-card
+                  - cover: cover.volets_maison #entité groupe volets
+                  - cover_group: cover.volets_maison #entité groupe volets
+              - type: custom:decluttering-card #template de la carte minigraph
                 template: template_mini_graph_card
                 variables:
-                  - temp: sensor.temperature_moyenne_maison
-                  - humidity: sensor.humidite_moyenne_maison
-                  - power_2: sensor.puissance_maison_complete
+                  - temp: sensor.temperature_moyenne_maison #sensor temperature
+                  - humidity: sensor.humidite_moyenne_maison #sensor humidité
+                  - power_2: sensor.puissance_maison_complete #sensor power
               - type: vertical-stack
                 cards:
                   - type: custom:meteofrance-weather-card
@@ -247,7 +247,7 @@
                   consommation:
                     card:
                       type: custom:button-card
-                      entity: sensor.192_168_1_52_package_id_0_temperature
+                      entity: sensor.192_168_package_id_0_temperature
                       tap_action:
                         action: none
                       hold_action:
@@ -291,7 +291,7 @@
                     card:
                       type: custom:mini-graph-card
                       entities:
-                        - sensor.192_168_1_52_package_id_0_temperature
+                        - sensor.192_168_package_id_0_temperature
                       show:
                         icon: false
                         name: false
@@ -2328,7 +2328,18 @@
                       border: none;
                       background: none;
                       }
-    visible:
-      - user: ab12842baf894b5f99ca9e360082cc89
-      - user: df8bbb8e55514e29bdd292e38d96d1b0
+          - type: vertical-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: pop-up
+                hash: "#cam_interieur"
+              - type: custom:frigate-card
+                cameras:
+                  - camera_entity: camera.tapo_c210_ad69_hd_stream
+                card_mod:
+                  style: |
+                    ha-card{
+                      border: none;
+                      background: none;
+                      }  
     cards: []
