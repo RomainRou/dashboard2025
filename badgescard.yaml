@@ -1,10 +1,10 @@
     badges:
-      - type: custom:decluttering-card
-        template: template_custom_badges
+      - type: custom:decluttering-card 
+        template: template_custom_badges #template du badge idem dans les autres cartes
         variables:
-          - label: Rox
-          - sensor_temp: sensor.chambre_rox_temperature
-      - type: custom:mushroom-template-badge
+          - label: Rox #titre du badge idem dans les autres cartes
+          - sensor_temp: sensor.chambre_rox_temperature #sensor pour le badge idem dans les autres cartes
+      - type: custom:mushroom-template-badge #badge permettant une action via un script peut etre supprimer idem pour les autres cartes
         content: Tel roxane
         icon: mdi:phone
         color: red
