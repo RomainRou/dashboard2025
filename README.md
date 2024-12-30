@@ -1,5 +1,8 @@
 Nouveau dashboard 2025, dans le même esprit que le precedent en assayant qu'il sois le plus adaptable possible a chacun. passage des cartes principale en section , supression total de l'addon card_mod des cartes principal pour une rapidité accrue de l'affichage, cartes plus interactives avec plus d'options, la reduction de la taille des cartes permet de moin naviguer , installation complete encore plus simple.<br>
+vue pc
 ![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%201.png) <br>
+vue telephone
+![screenshot]
 Addon: 
   - lovelace-meteofrance-weather-card ( https://github.com/hacf-fr/lovelace-meteofrance-weather-card )
   - vertical-stack-in-card ( https://github.com/ofekashery/vertical-stack-in-card )
