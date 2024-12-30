@@ -1,14 +1,14 @@
 Nouveau dashboard 2025, dans le même esprit que le precedent en assayant qu'il sois le plus adaptable possible a chacun. passage des cartes principale en section , supression total de l'addon card_mod des cartes principal pour une rapidité accrue de l'affichage, cartes plus interactives avec plus d'options, la reduction de la taille des cartes permet de moin naviguer , installation complete encore plus simple.<br>
-dashboard pc
-![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%201.png) <br>
-popup pc
+dashboard pc<br>
+![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%201.png) <br><br>
+popup pc<br>
 ![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%202.png) <br>
 ![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%203.png) <br>
-![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%204.png) <br>
-dashboard telephone
-![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel%201.jpeg)<br>
-popup telephone
-![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/popup%20tel.jpeg)<br>
+![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%204.png) <br><br>
+dashboard telephone<br>
+![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel%201.jpeg)<br><br>
+popup telephone<br>
+![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/popup%20tel.jpeg)<br><br>
 Addon: 
   - lovelace-meteofrance-weather-card ( https://github.com/hacf-fr/lovelace-meteofrance-weather-card )
   - vertical-stack-in-card ( https://github.com/ofekashery/vertical-stack-in-card )
