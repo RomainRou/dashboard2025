@@ -1,12 +1,11 @@
 Nouveau dashboard 2025, dans le même esprit que le precedent en assayant qu'il sois le plus adaptable possible a chacun. passage des cartes principale en section , supression total de l'addon card_mod des cartes principal pour une rapidité accrue de l'affichage, cartes plus interactives avec plus d'options, la reduction de la taille des cartes permet de moin naviguer , installation complete encore plus simple.<br>
 dashboard pc<br>
-![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%201.png) <br><br>
-<img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%201.png" alt="Description" width="400"/>
+<img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%201.png" alt="Description" width="400"/><br><br>
 
 popup pc<br>
-![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%202.png) <br>
-![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%203.png) <br>
-![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%204.png) <br><br>
+<img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%202.png" alt="Description" width="400"/><br>
+<img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%203.png" alt="Description" width="400"/><br>
+<img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%204.png" alt="Description" width="400"/><br><br>
 dashboard telephone<br>
 ![screenshot](https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel%201.jpeg)<br><br>
 popup telephone<br>
