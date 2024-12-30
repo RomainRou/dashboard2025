@@ -7,7 +7,7 @@ popup pc<br>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%203.png" alt="Description" width="400"/>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%204.png" alt="Description" width="400"/><br><br>
 dashboard telephone<br>
-<img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel%201.jpeg" alt="Description" width="400"/><br><br>
+<img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel%201.jpeg" alt="Description" width="300"/><br><br>
 popup telephone<br>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel.jpeg" alt="Description" width="400"/><br><br>
 Addon: 
