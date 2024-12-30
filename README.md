@@ -9,14 +9,11 @@ dashboard et popup telephone<br>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/popup%20tel.jpeg" alt="Description" width="150"/><br><br>
 Addon: 
   - lovelace-meteofrance-weather-card ( https://github.com/hacf-fr/lovelace-meteofrance-weather-card )
-  - vertical-stack-in-card ( https://github.com/ofekashery/vertical-stack-in-card )
   - tabbed card (uniquement si pronote est utiliser)( https://github.com/kinghat/tabbed-card )
   - mushroom ( https://github.com/piitaya/lovelace-mushroom )
   - card-mod ( https://github.com/thomasloven/lovelace-card-mod )
   - bubble-card ( https://github.com/Clooos/Bubble-Card )
-  - layout-card ( https://github.com/thomasloven/lovelace-layout-card )
   - mini-graph-card ( https://github.com/kalkih/mini-graph-card )
-  - stack-in-card ( https://github.com/custom-cards/stack-in-card )
   - decluttering card ( https://github.com/custom-cards/decluttering-card )
   - fold-entity-row ( https://github.com/thomasloven/lovelace-fold-entity-row )
   - button-card ( https://github.com/custom-cards/button-card )
