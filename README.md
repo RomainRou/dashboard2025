@@ -7,9 +7,9 @@ popup pc<br>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%203.png" alt="Description" width="400"/>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%204.png" alt="Description" width="400"/><br><br>
 dashboard telephone<br>
-<img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel%201.jpeg" alt="Description" width="200"/>
+<img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel%201.jpeg" alt="Description" width="150"/>
 popup telephone<br>
-<img src="https://github.com/RomainRou/dashboard2025/blob/main/popup%20tel.jpeg" alt="Description" width="200"/><br><br>
+<img src="https://github.com/RomainRou/dashboard2025/blob/main/popup%20tel.jpeg" alt="Description" width="150"/><br><br>
 Addon: 
   - lovelace-meteofrance-weather-card ( https://github.com/hacf-fr/lovelace-meteofrance-weather-card )
   - vertical-stack-in-card ( https://github.com/ofekashery/vertical-stack-in-card )
