@@ -34,11 +34,15 @@
     - content_1_top_right: null
     - light_1_top_right: light.salon
     - content_light_1_top_right: null
-    - entity_cover: cover.volet_salon #entité volet si present dans la pieces
+    - entity_cover: cover.volet_salon
     - entity_2_top_right: media_player.samsung_7_series_65
     - content_2_top_right: null
-    - entity_alarme: alarm_control_panel.alarmo #entité alarme si present
-    - navigation: '#salon'
+    - entity_3_top_left: switch.interieur_detect
+    - content_3_top_left: null
+    - entity_alarme: alarm_control_panel.alarmo
+    - code_alarm: "" #code de l'alarme 
+    - navigation_cam: "#cam_interieur"
+    - navigation: "#salon"
 - type: custom:decluttering-card
   template: template_custom_button_room_card
   variables:
