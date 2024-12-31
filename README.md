@@ -38,4 +38,7 @@ Enregistré et quitter avec la croix en haut a gauche<br><br>
 Maintenant il faut cré un nouveau dashboard en mode section<br>
 <img src="https://i.gyazo.com/fed94454ef5c114f1a34f48ced428ae1.png" alt="Description" width="200"/><br>
 Pour le nombre de section c'est libre a vous<br> 
-<img src="https://i.gyazo.com/062ecd10c9cb40f47d510737bce57b70.png" alt="Description" width="200"/>
+<img src="https://i.gyazo.com/062ecd10c9cb40f47d510737bce57b70.png" alt="Description" width="200"/><br>
+Dans le nouveau dashboard il faut ajouter une carte manuel<br>
+<img src="https://i.gyazo.com/2db46db25d00724282166ece85dec922.png" alt="Description" width="200"/>
+<img src="https://i.gyazo.com/31ff55443f3ba690d814bbcb1c2f0d0c.png" alt="Description" width="200"/>
