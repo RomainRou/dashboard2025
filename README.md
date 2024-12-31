@@ -42,4 +42,6 @@ Pour le nombre de section c'est libre a vous<br>
 Dans le nouveau dashboard il faut ajouter une carte manuel<br>
 <img src="https://i.gyazo.com/2db46db25d00724282166ece85dec922.png" alt="Description" width="200"/>
 <img src="https://i.gyazo.com/31ff55443f3ba690d814bbcb1c2f0d0c.png" alt="Description" width="200"/><br>
-Dans la carte manuel il faut copié la carte choisi dans le fichier 
+Dans la carte manuel il faut copié la carte choisi dans le fichier dashboardcard.yaml<br>
+<img src="https://i.gyazo.com/1ef4acdc994d4e721dfd5b92510ab09d.png" alt="Description" width="200"/><br>
+et refaire la manip avec une carte manuel pour les popup en prenant le popup correspondant dans le fichier popupcard.yaml
