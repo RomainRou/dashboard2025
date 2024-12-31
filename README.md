@@ -29,4 +29,6 @@ Integrations:
   - ainsi que les intégrations pour les perifériques bien entendue et ceux que vous voulez mettre dans les cartes<br><br>
 instalation du dashboard:<br>
 dans home assistant cliquer sur le crayon pour modifier de le dashboard en haut a droite<br>
-<img src="https://i.gyazo.com/94495911cb00a289e33ccccaa2199985.png" alt="Description" width="400"/>
+<img src="https://i.gyazo.com/94495911cb00a289e33ccccaa2199985.png" alt="Description" width="200"/><br>
+ensuite il faut cliquer sur les 3 points encore en haut a droite , et appuyer sur editeur de configurationw<br>
+<img src="https://i.gyazo.com/46c23e632bcfaac701cf0d0c17eaf874.png" alt="Description" width="200"/><br>
