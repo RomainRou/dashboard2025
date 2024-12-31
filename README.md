@@ -1,4 +1,4 @@
-Nouveau dashboard 2025, dans le même esprit que le precedent en assayant qu'il sois le plus adaptable possible a chacun. passage des cartes principale en section , supression total de l'addon card_mod des cartes principal pour une rapidité accrue de l'affichage, cartes plus interactives avec plus d'options, la reduction de la taille des cartes permet de moin naviguer , installation complete encore plus simple.<br>
+Nouveau dashboard 2025, dans le même esprit que le precedent en assayant qu'il sois le plus adaptable possible a chacun. passage des cartes principale en section , supression total de l'addon card_mod des cartes principal pour une rapidité accrue de l'affichage, cartes plus interactives avec plus d'options, la reduction de la taille des cartes permet de moins naviguer , installation complete encore plus simple.<br>
 dashboard et popup pc<br>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%201.png" alt="Description" width="400"/>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%202.png" alt="Description" width="400"/>
@@ -8,25 +8,25 @@ dashboard et popup telephone<br>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel%201.jpeg" alt="Description" width="150"/>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/popup%20tel.jpeg" alt="Description" width="150"/><br><br>
 Addon: 
-  - lovelace-meteofrance-weather-card ( https://github.com/hacf-fr/lovelace-meteofrance-weather-card )
-  - tabbed card (uniquement si pronote est utiliser)( https://github.com/kinghat/tabbed-card )
-  - mushroom ( https://github.com/piitaya/lovelace-mushroom )
-  - card-mod ( https://github.com/thomasloven/lovelace-card-mod )
-  - bubble-card ( https://github.com/Clooos/Bubble-Card )
-  - mini-graph-card ( https://github.com/kalkih/mini-graph-card )
-  - decluttering card ( https://github.com/custom-cards/decluttering-card )
-  - fold-entity-row ( https://github.com/thomasloven/lovelace-fold-entity-row )
-  - button-card ( https://github.com/custom-cards/button-card )
-  - custom-icon (https://github.com/Mariusthvdb/custom-icons)
-  - pronote-card (https://github.com/delphiki/lovelace-pronote)
-  - frigate-card (https://github.com/dermotduffy/frigate-hass-card/)
+  - lovelace-meteofrance-weather-card ( https://github.com/hacf-fr/lovelace-meteofrance-weather-card ) #popup meteo
+  - tabbed card (uniquement si pronote est utiliser)( https://github.com/kinghat/tabbed-card ) #tableau pronote
+  - mushroom ( https://github.com/piitaya/lovelace-mushroom ) #theme general
+  - card-mod ( https://github.com/thomasloven/lovelace-card-mod ) #seulement pour les popup 
+  - bubble-card ( https://github.com/Clooos/Bubble-Card ) #pour les popup
+  - mini-graph-card ( https://github.com/kalkih/mini-graph-card ) #graph dans les popup
+  - decluttering card ( https://github.com/custom-cards/decluttering-card ) #pour le template des cartes
+  - fold-entity-row ( https://github.com/thomasloven/lovelace-fold-entity-row ) #menu dans les popup
+  - button-card ( https://github.com/custom-cards/button-card ) #carte principale
+  - custom-icon (https://github.com/Mariusthvdb/custom-icons) #icon dynamique volets
+  - pronote-card (https://github.com/delphiki/lovelace-pronote) #carte pronote, elle ne sont pas entierement changer en attente de dispo aupres du dev  
+  - frigate-card (https://github.com/dermotduffy/frigate-hass-card/) #carte camera
 
 
 Integrations:
   - meteo france (pour afficher la meteo)
   - alarmo (si utiliser sinon peut etre supprimer)( https://github.com/nielsfaber/alarmo )
   - pronote (si utiliser sinon peut etre supprimer)( https://github.com/delphiki/hass-pronote )
-  - ainsi que les intégrations pour les perifériques bien entendue et ceux que vous voulez mettre dans les cartes<br><br>
+  - ainsi que les intégrations pour vos perif bien entendue et ceux que vous voulez mettre dans les cartes<br><br>
 Instalation du dashboard:<br><br>
 Dans home assistant cliquer sur le crayon pour modifier de le dashboard en haut a droite<br>
 <img src="https://i.gyazo.com/94495911cb00a289e33ccccaa2199985.png" alt="Description" width="200"/><br>
@@ -45,4 +45,5 @@ Dans le nouveau dashboard il faut ajouter une carte manuel<br>
 Dans la carte manuel il faut copié la carte choisi dans le fichier dashboardcard.yaml<br>
 <img src="https://i.gyazo.com/1ef4acdc994d4e721dfd5b92510ab09d.png" alt="Description" width="200"/><br>
 et refaire la manip avec une carte manuel pour les popup en prenant le popup correspondant dans le fichier popupcard.yaml<br>
-Dans les cartes il voous suffit de changer les entitées,sensors etc....
+Dans les cartes il vous suffit de changer les entitées,sensors etc....<br>
+des mise a jours serons faites au fur et a mesure pour avoir encore plus de flexibilité pour les cartes 
