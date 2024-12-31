@@ -32,3 +32,5 @@ dans home assistant cliquer sur le crayon pour modifier de le dashboard en haut 
 <img src="https://i.gyazo.com/94495911cb00a289e33ccccaa2199985.png" alt="Description" width="200"/><br>
 ensuite il faut cliquer sur les 3 points encore en haut a droite , et appuyer sur editeur de configurationw<br>
 <img src="https://i.gyazo.com/46c23e632bcfaac701cf0d0c17eaf874.png" alt="Description" width="200"/><br>
+Copié l'integralité du fichier lovelace.ui avant la ligne view<br>
+<img src="https://i.gyazo.com/4cae48a22539b91cf6b774fc060d7fde.png" alt="Description" width="200"/><br>
