@@ -1,63 +1,72 @@
-    badges:
-      - type: custom:decluttering-card 
-        template: template_custom_badges #template du badge idem dans les autres cartes
-        variables:
-          - label: Rox #titre du badge idem dans les autres cartes
-          - sensor_temp: sensor.chambre_rox_temperature #sensor pour le badge idem dans les autres cartes
-      - type: custom:mushroom-template-badge #badge permettant une action via un script peut etre supprimer idem pour les autres cartes
-        content: Tel roxane
-        icon: mdi:phone
-        color: red
-        tap_action:
-          action: perform-action
-          perform_action: script.annonce_roxane_telephone
-          target: {}
-        entity: media_player.salon
-      - type: custom:decluttering-card
-        template: template_custom_badges
-        variables:
-          - label: Nathan
-          - sensor_temp: sensor.chambre_nathan_temperature
-      - type: custom:mushroom-template-badge
-        content: Tel nathan
-        icon: mdi:phone
-        color: red
-        tap_action:
-          action: perform-action
-          perform_action: script.annonce_nathan_telephone
-          target: {}
-        entity: media_player.salon
-      - type: custom:decluttering-card
-        template: template_custom_badges
-        variables:
-          - label: Ethan
-          - sensor_temp: sensor.chambre_ethan_temperature
-      - type: custom:mushroom-template-badge
-        content: Tel ethan
-        icon: mdi:phone
-        color: red
-        tap_action:
-          action: perform-action
-          perform_action: script.annonce_ethan_telephone
-          target: {}
-        entity: media_player.salon
-      - type: custom:decluttering-card
-        template: template_custom_badges
-        variables:
-          - label: Parentale
-          - sensor_temp: sensor.chambre_parentale_temperature
-      - type: custom:decluttering-card
-        template: template_custom_badges
-        variables:
-          - label: Amis
-          - sensor_temp: sensor.chambre_d_amis_temperature
-      - type: custom:decluttering-card
-        template: template_custom_badges
-        variables:
-          - label: Rdc
-          - sensor_temp: sensor.temperature_moyenne_rdc
-      - type: custom:decluttering-card
-        template: template_custom_badges
-        variables:
-          - label: Etage
-          - sensor_temp: sensor.temperature_moyenne_etage
+badges:
+  - type: custom:decluttering-card 
+    template: template_custom_badges #template du badge idem dans les autres cartes
+    variables:
+      - label: Rox #titre du badge idem dans les autres cartes
+      - sensor_temp: sensor.chambre_rox_temperature #sensor pour le badge idem dans les autres cartes
+      
+  - type: custom:mushroom-template-badge #badge permettant une action via un script peut etre supprimer idem pour les autres cartes
+    content: Tel roxane
+    icon: mdi:phone
+    color: red
+    tap_action:
+      action: perform-action
+      perform_action: script.annonce_roxane_telephone
+      target: {}
+    entity: media_player.salon
+    
+  - type: custom:decluttering-card
+    template: template_custom_badges
+    variables:
+      - label: Nathan
+      - sensor_temp: sensor.chambre_nathan_temperature
+      
+  - type: custom:mushroom-template-badge
+    content: Tel nathan
+    icon: mdi:phone
+    color: red
+    tap_action:
+      action: perform-action
+      perform_action: script.annonce_nathan_telephone
+      target: {}
+    entity: media_player.salon
+    
+  - type: custom:decluttering-card
+    template: template_custom_badges
+    variables:
+      - label: Ethan
+      - sensor_temp: sensor.chambre_ethan_temperature
+      
+  - type: custom:mushroom-template-badge
+    content: Tel ethan
+    icon: mdi:phone
+    color: red
+    tap_action:
+      action: perform-action
+      perform_action: script.annonce_ethan_telephone
+      target: {}
+    entity: media_player.salon
+    
+  - type: custom:decluttering-card
+    template: template_custom_badges
+    variables:
+      - label: Parentale
+      - sensor_temp: sensor.chambre_parentale_temperature
+      
+  - type: custom:decluttering-card
+    template: template_custom_badges
+    variables:
+      - label: Amis
+      - sensor_temp: sensor.chambre_d_amis_temperature
+      
+  - type: custom:decluttering-card
+    template: template_custom_badges
+    variables:
+      - label: Rdc
+      - sensor_temp: sensor.temperature_moyenne_rdc
+      
+  - type: custom:decluttering-card
+    template: template_custom_badges
+    variables:
+      - label: Etage
+      - sensor_temp: sensor.temperature_moyenne_etage
