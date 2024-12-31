@@ -27,3 +27,6 @@ Integrations:
   - alarmo (si utiliser sinon peut etre supprimer)( https://github.com/nielsfaber/alarmo )
   - pronote (si utiliser sinon peut etre supprimer)( https://github.com/delphiki/hass-pronote )
   - ainsi que les intégrations pour les perifériques bien entendue et ceux que vous voulez mettre dans les cartes<br><br>
+instalation du dashboard:<br>
+dans home assistant cliquer sur le crayon pour modifier de le dashboard<br>
+<img src="https://gyazo.com/94495911cb00a289e33ccccaa2199985" alt="Description" width="400"/>
