@@ -1,6 +1,6 @@
 Nouveau Dashboard 2025, dans le même esprit room card que le précèdent en essayant que les cartes soit le plus adaptable possible à chacun. Passage des cartes principale en section, suppression totale de l'addon card_mod des cartes principal pour une rapidité accrue de l'affichage, cartes plus interactives avec plus d'options, la réduction de la taille des cartes permet de moins naviguer, installation complète encore plus simple.<br>
 Les chip card light,alarme,camera sur les cartes principales sont actionnable pour ne pas avoir à ouvrir le popup pour éteindre les lumières, désarmer l'alarme ou voir la vue des cameras<br>
-Se sont les grandes lignes et les grandes différences entre les les précédents dashboard et celui là,d'autres améliorations/modifications arriverons par la suite<br>
+Se sont les grandes lignes et les grandes différences entre les précédents dashboard et celui là,d'autres améliorations/modifications arriverons par la suite<br>
 Si vous rencontrez des problèmes, des bugs ou avez des idées d'amélioration ne pas hésiter à m'en parler.
 dashboard et popup pc<br>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%201.png" alt="Description" width="400"/>
