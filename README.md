@@ -29,7 +29,7 @@ Integrations :
   - pronote (si utiliser sinon peut être supprimer)( https://github.com/delphiki/hass-pronote )
   - ainsi que les intégrations pour vos périf bien entendue et ceux que vous voulez mettre dans les cartes<br><br>
 Instalation du dashboard:<br><br>
-Dans home assistant cliquer sur le crayon pour modifier de le dashboard en haut à droite<br>
+Dans home assistant cliquer sur le crayon pour modifier le dashboard en haut à droite<br>
 <img src="https://i.gyazo.com/94495911cb00a289e33ccccaa2199985.png" alt="Description" width="200"/><br>
 Ensuite il faut cliquer sur les 3 points encore en haut à droite, et appuyer sur éditeur de configuration<br>
 <img src="https://i.gyazo.com/46c23e632bcfaac701cf0d0c17eaf874.png" alt="Description" width="200"/><br>
