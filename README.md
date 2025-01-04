@@ -28,6 +28,16 @@ Integrations :
   - alarmo (si utiliser sinon peut etre supprimer)( https://github.com/nielsfaber/alarmo )
   - pronote (si utiliser sinon peut être supprimer)( https://github.com/delphiki/hass-pronote )
   - ainsi que les intégrations pour vos périf bien entendue et ceux que vous voulez mettre dans les cartes<br><br>
+Update 1 : Le changement de couleur des icons se fait dans les cartes principales a l'aide des variables:<br>
+           pour les intitées sur la droite de la carte:   - entity_1_icon_color_top_right
+                                                          - entity_2_icon_color_top_right
+                                                          - entity_3_icon_color_top_right
+           pour les lumières sur la droite de la carte:   - light_1_icon_color_top_right
+                                                          - light_2_icon_color_top_right
+                                                          - light_3_icon_color_top_right
+           pour l'entitée sur la gauche de la carte:      - entity_3_icon_color_top_left
+           pour l'icone des volet sur la gauche:          - entity_cover_icon_color
+<br><br>
 Instalation du dashboard:<br><br>
 Dans home assistant cliquer sur le crayon pour modifier le dashboard en haut à droite<br>
 <img src="https://i.gyazo.com/94495911cb00a289e33ccccaa2199985.png" alt="Description" width="200"/><br>
