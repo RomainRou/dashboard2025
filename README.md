@@ -37,6 +37,7 @@ Update 1 : Le changement de couleur des icons se fait dans les cartes principale
                                                           - light_3_icon_color_top_right<br>
            pour l'entitée sur la gauche de la carte:<br>      - entity_3_icon_color_top_left<br>
            pour l'icone des volet sur la gauche:<br>          - entity_cover_icon_color<br>
+Update 2 : affichage de la temperature directement sur la carte (en cours)
 <br><br>
 Instalation du dashboard:<br><br>
 Dans home assistant cliquer sur le crayon pour modifier le dashboard en haut à droite<br>
