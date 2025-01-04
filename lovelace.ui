@@ -44,7 +44,7 @@ decluttering_templates:
                   icon_color: >
                     {% if is_state('[[entity_1_top_right]]', 'on') or
                     is_state('[[entity_1_top_right]]', 'recording') %}
-                     #03a9f4
+                     [[entity_1_icon_color_top_right]]
                     {% endif %}
                   content: '[[content_1_top_right]]'
               - type: conditional
@@ -76,7 +76,7 @@ decluttering_templates:
                   icon_color: >
                     {% if is_state('[[entity_2_top_right]]', 'on') or
                     is_state('[[entity_2_top_right]]', 'recording') %}
-                     #03a9f4
+                     [[entity_2_icon_color_top_right]]
                     {% endif %}
                   content: '[[content_2_top_right]]'
               - type: conditional
@@ -108,7 +108,7 @@ decluttering_templates:
                   icon_color: >
                     {% if is_state('[[entity_3_top_right]]', 'on') or
                     is_state('[[entity_3_top_right]]', 'recording') %}
-                     #03a9f4
+                     [[entity_3_icon_color_top_right]]
                     {% endif %}
                   content: '[[content_3_top_right]]'
               - type: conditional
@@ -140,7 +140,7 @@ decluttering_templates:
                   icon_color: >
                     {% if is_state('[[light_1_top_right]]', 'on') or
                     is_state('[[light_1_top_right]]', 'recording') %}
-                     #03a9f4
+                     [[light_1_icon_color_top_right]]
                     {% endif %}
                   content: '[[content_light_1_top_right]]'
               - type: conditional
@@ -172,7 +172,7 @@ decluttering_templates:
                   icon_color: >
                     {% if is_state('[[light_2_top_right]]', 'on') or
                     is_state('[[light_2_top_right]]', 'recording') %}
-                     #03a9f4
+                     [[light_1_icon_color_top_right]]
                     {% endif %}
                   content: '[[content_light_2_top_right]]'
               - type: conditional
@@ -204,7 +204,7 @@ decluttering_templates:
                   icon_color: >
                     {% if is_state('[[light_3_top_right]]', 'on') or
                     is_state('[[light_3_top_right]]', 'recording') %}
-                     #03a9f4
+                     [[entity_3_icon_color_top_right]]
                     {% endif %}
                   content: '[[content_light_3_top_right]]'
         chip_card_left_top:
@@ -294,7 +294,7 @@ decluttering_templates:
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
-                  icon_color: '#03a9f4'
+                  icon_color: [[entity_3_icon_color_top_left]]
                   content: '[[content_3_top_left]]'
       styles:
         name:
