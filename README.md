@@ -47,4 +47,4 @@ Dans la carte manuel il faut copié la carte choisi dans le fichier dashboardcar
 <img src="https://i.gyazo.com/1ef4acdc994d4e721dfd5b92510ab09d.png" alt="Description" width="200"/><br>
 Et refaire la manip avec une carte manuel pour les popup en prenant le popup correspondant dans le fichier popupcard.yaml<br>
 Dans les cartes il vous suffit de changer les entitées,sensors etc....<br>
-Des mises à jour serons faites au fur et à mesure pour avoir encore plus de flexibilité pour les cartes
+Des mises à jour serons faites au fur et à mesure pour avoir encore plus de flexibilité pour les cartes et de personnalisation des cartes. bonne amusement 
