@@ -242,7 +242,7 @@ decluttering_templates:
                     {% else %}
                       mdi:window-shutter-closed
                     {% endif %}
-                  icon_color: '#03a9f4'
+                  icon_color: '[[entity_cover_icon_color]]'
                   entity: '[[entity_cover]]'
               - type: conditional
                 conditions:
