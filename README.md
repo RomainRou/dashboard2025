@@ -30,7 +30,7 @@ Integrations :
   - ainsi que les intégrations pour vos périf bien entendue et ceux que vous voulez mettre dans les cartes<br><br>
 Pour les updates il vous suffit de remplacer l'ancien code lovelace.ui par le nouveau.<br><br>
 Update 1 : Le changement de couleur des icons se fait dans les cartes principales a l'aide des variables:<br>
-pour les intitées sur la droite de la carte:<br>
+  pour les intitées sur la droite de la carte:<br>
     - entity_1_icon_color_top_right<br>
     - entity_2_icon_color_top_right<br>
     - entity_3_icon_color_top_right<br><br>
