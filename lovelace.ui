@@ -296,6 +296,32 @@ decluttering_templates:
                     {% endif %}
                   icon_color: [[entity_3_icon_color_top_left]]
                   content: '[[content_3_top_left]]'
+        chip_card_center:
+          card:
+            type: custom:button-card
+            tap_action:
+              action: none
+            show_icon: false
+            entity: '[[sensor_temp]]'
+            layout: icon_label
+            show_label: false
+            show_name: false
+            show_state: true
+            styles:
+              state:
+                - color: '#000000'
+                - font-weight: bold
+                - border: white
+                - text-shadow: |-
+                    -1px -1px 0 white, 
+                     1px -1px 0 white, 
+                    -1px 1px 0 white, 
+                     1px 1px 0 white, 
+                     2px 2px 3px #000000
+              card:
+                - background: none
+                - border: none
+                - width: 60px
       styles:
         name:
           - color: white
@@ -314,6 +340,11 @@ decluttering_templates:
           chip_card_left_top:
             - position: absolute
             - left: 1%
+          chip_card_center:
+            - position: absolute
+            - left: 42%
+            - transform: scale(0.7)
+            - top: 57%
   template_custom_button_weather_card:
     card:
       type: custom:button-card
