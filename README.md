@@ -43,6 +43,8 @@ pour l'entitée sur la gauche de la carte:<br>
 pour l'icone des volet sur la gauche:<br>
     - entity_cover_icon_color<br><br>
 Update 2 : affichage de la temperature des pieces directement sur la room card reseigner par la ligne: - sensor_temp dans les cartes <br>
+Update 3 : suppression de card_mod de la carte de commande de volet avec modification 100% = ouvert, 0% = fermé<br><br>
+Update en cour suppression de card mod<br><br>
 <br><br>
 Instalation du dashboard:<br><br>
 Dans home assistant cliquer sur le crayon pour modifier le dashboard en haut à droite<br>
