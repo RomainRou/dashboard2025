@@ -1488,12 +1488,6 @@ decluttering_templates:
               mdi:window-shutter-closed
             {% endif %}
           icon_color: '#03a9f4'
-          card_mod:
-            style: |
-              ha-card{
-                --chip-background: #03a9f425;
-                border: none;
-              }
         - type: template
           tap_action:
             action: none
@@ -1507,17 +1501,21 @@ decluttering_templates:
               {% set positions = all | map(attribute='attributes.current_position') | list -%}
               {% set fermes = positions | reject("!=", 0) | list | count %}
               {% set ouverts = positions | reject("!=", 100) | list | count %}
-              {% set partiels = positions | list | count - ouverts - fermes %} {%- if fermes > 0 %} Fermé(s):{{ fermes }} {%- endif %} 
+              {% set partiels = positions | list | count - ouverts - fermes %}
+              {%- if fermes > 0 %} Fermé(s):{{ fermes }} {%- endif %} 
               {%- if partiels > 0 %} Partiel(s):{{ partiels }} {%- endif %} 
-              {%- if ouverts > 0 %} Ouvert(s):{{ ouverts }} {%- endif %} {% else %} {% set position = states['[[cover]]'].attributes.current_position | int %} {% if position > 0 %} {{ position }}% {% endif %}
+              {%- if ouverts > 0 %} Ouvert(s):{{ ouverts }} {%- endif %} 
+            {% else %}
+              {% set position = states['[[cover]]'].attributes.current_position | int %}
+              {% if position == 100 %}
+                Ouvert
+              {% elif position == 0 %}
+                Fermé
+              {% else %}
+                {{ position }}%
+              {% endif %}
             {% endif %}
           entity: '[[cover_group]]'
-          card_mod:
-            style: |
-              ha-card{
-                border: none;
-                --chip-background: none;
-              }
         - type: template
           tap_action:
             action: perform-action
@@ -1531,18 +1529,19 @@ decluttering_templates:
             action: none
           icon: mdi:arrow-up-bold
           icon_color: |
-            {% if 0 <= state_attr('[[cover]]', 'current_position') <=
-            99 %}
+            {% if 0 <= state_attr('[[cover]]', 'current_position') <= 99 %}
               #03a9f4
             {% else %}
               #808080
             {% endif %}
-          card_mod:
-            style: |
-              ha-card{
-                border: none;
-                --chip-background: {% if 0 <= state_attr('[[cover]]', 'current_position') <= 99 %} #03a9f425 {% else %} #80808025 {% endif %};
-              }
+          style:
+            chip:
+              background-color: |
+                {% if 0 <= state_attr('[[cover]]', 'current_position') <= 99 %}
+                  rgba(3, 169, 244, 0.25)
+                {% else %}
+                  rgba(128, 128, 128, 0.25)
+                {% endif %}
         - type: template
           tap_action:
             action: perform-action
@@ -1561,12 +1560,14 @@ decluttering_templates:
             {% else %}
               #808080
             {% endif %}
-          card_mod:
-            style: |
-              ha-card{
-                border: none;
-                --chip-background: {% if 1 <= state_attr('[[cover]]', 'current_position') <= 99 %} #03a9f425 {% else %} #80808025 {% endif %};
-              }
+          style:
+            chip:
+              background-color: |
+                {% if 1 <= state_attr('[[cover]]', 'current_position') <= 99 %}
+                  rgba(3, 169, 244, 0.25)
+                {% else %}
+                  rgba(128, 128, 128, 0.25)
+                {% endif %}
         - type: template
           tap_action:
             action: perform-action
@@ -1580,18 +1581,19 @@ decluttering_templates:
             action: none
           icon: mdi:arrow-down-bold
           icon_color: |
-            {% if 1 <= state_attr('[[cover]]', 'current_position') <=
-            100 %}
+            {% if 1 <= state_attr('[[cover]]', 'current_position') <= 100 %}
               #03a9f4
             {% else %}
               #808080
             {% endif %}
-          card_mod:
-            style: |
-              ha-card{
-                border: none;
-                --chip-background: {% if 1 <= state_attr('[[cover]]', 'current_position') <= 100 %} #03a9f425 {% else %} #80808025 {% endif %};
-              }
+          style:
+            chip:
+              background-color: |
+                {% if 1 <= state_attr('[[cover]]', 'current_position') <= 100 %}
+                  rgba(3, 169, 244, 0.25)
+                {% else %}
+                  rgba(128, 128, 128, 0.25)
+                {% endif %}
 #template de la carte minigraph dans les popups
   template_mini_graph_card:
     card:
