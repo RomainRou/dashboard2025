@@ -30,18 +30,18 @@ Integrations :
   - ainsi que les intégrations pour vos périf bien entendue et ceux que vous voulez mettre dans les cartes<br><br>
 Pour les updates il vous suffit de remplacer l'ancien code lovelace.ui par le nouveau.<br><br>
 Update 1 : Le changement de couleur des icons se fait dans les cartes principales a l'aide des variables:<br>
-  pour les intitées sur la droite de la carte:<br>
-    - entity_1_icon_color_top_right<br>
-    - entity_2_icon_color_top_right<br>
-    - entity_3_icon_color_top_right<br><br>
+pour les intitées sur la droite de la carte:<br>
+  - entity_1_icon_color_top_right<br>
+  - entity_2_icon_color_top_right<br>
+  - entity_3_icon_color_top_right<br><br>
 pour les lumières sur la droite de la carte:<br>
-    - light_1_icon_color_top_right<br>
-    - light_2_icon_color_top_right<br>
-    - light_3_icon_color_top_right<br><br>
+  - light_1_icon_color_top_right<br>
+  - light_2_icon_color_top_right<br>
+  - light_3_icon_color_top_right<br><br>
 pour l'entitée sur la gauche de la carte:<br>
-    - entity_3_icon_color_top_left<br><br>
+  - entity_3_icon_color_top_left<br><br>
 pour l'icone des volet sur la gauche:<br>
-    - entity_cover_icon_color<br><br>
+  - entity_cover_icon_color<br><br>
 Update 2 : affichage de la temperature des pieces directement sur la room card reseigner par la ligne: - sensor_temp dans les cartes <br>
 Update 3 : suppression de card_mod de la carte de commande de volet avec modification 100% = ouvert, 0% = fermé<br><br>
 Update en cour suppression de card mod<br><br>
