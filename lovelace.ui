@@ -1461,114 +1461,165 @@ decluttering_templates:
 #template de la carte de controle de volet avec affichage d'etat dans les popups
   template_cover_chip_card:
     card:
-      type: custom:mushroom-chips-card
-      alignment: center
-      chips:
-        - type: template
-          tap_action:
-            action: none
-          hold_action:
-            action: none
-          double_tap_action:
-            action: none
+      type: horizontal-stack
+      cards:
+        - type: custom:button-card
           entity: '[[cover]]'
-          icon: >-
-            {% set position = states['[[cover]]'].attributes.current_position |
-            int %} {% if position == 100 %}
-              cil:shutter-0
-            {% elif position >= 75 %}
-              cil:shutter-1
-            {% elif position >= 50 %}
-              cil:shutter-2
-            {% elif position >= 25 %}
-              cil:shutter-3
-            {% elif position >= 0 %}
-              cil:shutter-4
-            {% else %}
-              mdi:window-shutter-closed
-            {% endif %}
-          icon_color: '#03a9f4'
-        - type: template
+          show_state: false
+          show_name: false
+          styles:
+            card:
+              - box-shadow: none
+              - background: none
+              - display: flex
+              - flex-direction: column
+              - justify-content: flex-start
+              - align-items: center
+            icon:
+              - border-radius: 50px
+              - width: 23px
+              - height: 23px
+              - padding: 8px
+          state:
+            - operator: template
+              value: |
+                [[[ return entity.attributes.current_position === 100; ]]]
+              icon: cil:shutter-0
+              styles:
+                icon:
+                  - color: '#2196f3'
+                  - background-color: '#1d3447'
+            - operator: template
+              value: >
+                [[[ return entity.attributes.current_position >= 75 &&
+                entity.attributes.current_position < 100; ]]]
+              icon: cil:shutter-1
+              styles:
+                icon:
+                  - color: '#2196f3'
+                  - background-color: '#1d3447'
+            - operator: template
+              value: >
+                [[[ return entity.attributes.current_position >= 50 &&
+                entity.attributes.current_position < 75; ]]]
+              icon: cil:shutter-2
+              styles:
+                icon:
+                  - color: '#2196f3'
+                  - background-color: '#1d3447'
+            - operator: template
+              value: >
+                [[[ return entity.attributes.current_position >= 25 &&
+                entity.attributes.current_position < 50; ]]]
+              icon: cil:shutter-3
+              styles:
+                icon:
+                  - color: '#2196f3'
+                  - background-color: '#1d3447'
+            - operator: template
+              value: |
+                [[[ return entity.attributes.current_position >= 0 &&
+                entity.attributes.current_position < 25; ]]]
+              icon: cil:shutter-4
+              styles:
+                icon:
+                  - color: '#2196f3'
+                  - background-color: '#1d3447'
           tap_action:
             action: none
           hold_action:
             action: none
-          double_tap_action:
-            action: none
-          content: |
-            {% if expand("[[cover_group]]") | length > 0 %}
-              {% set all = expand("[[cover_group]]" | lower) -%} 
-              {% set positions = all | map(attribute='attributes.current_position') | list -%}
-              {% set fermes = positions | reject("!=", 0) | list | count %}
-              {% set ouverts = positions | reject("!=", 100) | list | count %}
-              {% set partiels = positions | list | count - ouverts - fermes %}
-              {%- if fermes > 0 %} Fermé(s):{{ fermes }} {%- endif %} 
-              {%- if partiels > 0 %} Partiel(s):{{ partiels }} {%- endif %} 
-              {%- if ouverts > 0 %} Ouvert(s):{{ ouverts }} {%- endif %} 
-            {% else %}
-              {% set position = states['[[cover]]'].attributes.current_position | int %}
-              {% if position == 100 %}
-                Ouvert
-              {% elif position == 0 %}
-                Fermé
-              {% else %}
-                {{ position }}%
-              {% endif %}
-            {% endif %}
-          entity: '[[cover_group]]'
-        - type: template
+          extra_styles: |
+            ha-card {
+              border: none;
+              background: none;
+            }
+        - type: custom:button-card
+          entity: '[[cover]]'
+          show_state: true
+          show_name: false
+          show_icon: false
+          styles:
+            card:
+              - box-shadow: none
+              - background: none
+              - display: flex
+              - flex-direction: column
+              - justify-content: flex-start
+              - align-items: center
+            state:
+              - margin-top: 12px
+              - font-size: 12px
+              - text-align: center
+              - font-family: Roboto
+              - font-weight: 411
+              - margin-top: 11px
+            icon:
+              - border-radius: 50px
+              - width: 23px
+              - height: 23px
+              - padding: 8px
+          state_display: |
+            [[[ 
+              if (entity.attributes.entity_id && entity.attributes.entity_id.length > 0) {
+                // Récupère les états des entités membres
+                const toutesCouvres = entity.attributes.entity_id.map(id => {
+                  const etat = states[id];
+                  if (etat && etat.attributes && typeof etat.attributes.current_position === "number") {
+                    return etat.attributes.current_position;
+                  }
+                  return null; // Valeur par défaut si aucune position valide
+                }).filter(pos => pos !== null); 
+                const fermes = toutesCouvres.filter(pos => pos === 0).length;
+                const ouverts = toutesCouvres.filter(pos => pos === 100).length;
+                const partiels = toutesCouvres.length - fermes - ouverts;          
+                let resultat = [];
+                if (fermes > 0) resultat.push(`F: ${fermes}`);
+                if (partiels > 0) resultat.push(`P: ${partiels}`);
+                if (ouverts > 0) resultat.push(`O: ${ouverts}`);
+                return resultat.join(" ");
+              } else {                
+                const position = entity.attributes.current_position || 0;
+                if (position === 100) return "Ouvert";
+                if (position === 0) return "Fermé";
+                return `${position}%`;
+              }
+            ]]]
           tap_action:
-            action: perform-action
-            perform_action: cover.open_cover
-            target:
-              entity_id: '[[cover]]'
-            haptic: success
+            action: none
           hold_action:
             action: none
-          double_tap_action:
-            action: none
-          icon: mdi:arrow-up-bold
-          icon_color: |
-            {% if 0 <= state_attr('[[cover]]', 'current_position') <= 99 %}
-              #03a9f4
-            {% else %}
-              #808080
-            {% endif %}
-          style:
-            chip:
-              background-color: |
-                {% if 0 <= state_attr('[[cover]]', 'current_position') <= 99 %}
-                  rgba(3, 169, 244, 0.25)
-                {% else %}
-                  rgba(128, 128, 128, 0.25)
-                {% endif %}
-        - type: template
-          tap_action:
-            action: perform-action
-            perform_action: cover.stop_cover
-            target:
-              entity_id: '[[cover]]'
-            haptic: success
-          hold_action:
-            action: none
-          double_tap_action:
-            action: none
-          icon: mdi:pause
-          icon_color: |
-            {% if 1 <= state_attr('[[cover]]', 'current_position') <= 99 %}
-              #03a9f4
-            {% else %}
-              #808080
-            {% endif %}
-          style:
-            chip:
-              background-color: |
-                {% if 1 <= state_attr('[[cover]]', 'current_position') <= 99 %}
-                  rgba(3, 169, 244, 0.25)
-                {% else %}
-                  rgba(128, 128, 128, 0.25)
-                {% endif %}
-        - type: template
+          extra_styles: |
+            ha-card {
+              border: none;
+              background: none;
+            }
+        - type: custom:button-card
+          variables:
+            current_position: '[[[ return entity.attributes.current_position || 0; ]]]'
+          entity: '[[cover]]'
+          icon: mdi:arrow-down
+          show_state: false
+          show_name: false
+          styles:
+            card:
+              - box-shadow: none
+              - background: none
+              - display: flex
+              - flex-direction: column
+              - justify-content: flex-start
+              - align-items: center
+            icon:
+              - border-radius: 13px
+              - width: 23px
+              - height: 23px
+              - padding: 8px
+              - color: >
+                  [[[ return variables.current_position == 0 ? "#808080" :
+                  "#2196f3"; ]]]
+              - background-color: >
+                  [[[ return variables.current_position == 0 ? "#80808025" :
+                  "#1d3447"; ]]]
           tap_action:
             action: perform-action
             perform_action: cover.close_cover
@@ -1579,21 +1630,93 @@ decluttering_templates:
             action: none
           double_tap_action:
             action: none
-          icon: mdi:arrow-down-bold
-          icon_color: |
-            {% if 1 <= state_attr('[[cover]]', 'current_position') <= 100 %}
-              #03a9f4
-            {% else %}
-              #808080
-            {% endif %}
-          style:
-            chip:
-              background-color: |
-                {% if 1 <= state_attr('[[cover]]', 'current_position') <= 100 %}
-                  rgba(3, 169, 244, 0.25)
-                {% else %}
-                  rgba(128, 128, 128, 0.25)
-                {% endif %}
+          extra_styles: |
+            ha-card {
+              border: none;
+              background: none;
+            }
+        - type: custom:button-card
+          entity: '[[cover]]'
+          icon: mdi:stop
+          show_state: false
+          show_name: false
+          styles:
+            card:
+              - box-shadow: none
+              - background: none
+              - display: flex
+              - flex-direction: column
+              - justify-content: flex-start
+              - align-items: center
+            icon:
+              - border-radius: 13px
+              - width: 23px
+              - height: 23px
+              - padding: 8px
+              - color: |
+                  [[[ 
+                    const position = entity.attributes.current_position || 0;
+                    return position > 0 && position < 100 ? "#2196f3" : "#808080"; 
+                  ]]]
+              - background-color: |
+                  [[[ 
+                    const position = entity.attributes.current_position || 0;
+                    return position > 0 && position < 100 ? "#1d3447" : "#80808025"; 
+                  ]]]
+          tap_action:
+            action: perform-action
+            perform_action: cover.stop_cover
+            target:
+              entity_id: '[[cover]]'
+            haptic: success
+          extra_styles: |
+            ha-card {
+              border: none;
+              background: none;
+            }
+        - type: custom:button-card
+          variables:
+            current_position: '[[[ return entity.attributes.current_position || 0; ]]]'
+          entity: '[[cover]]'
+          icon: mdi:arrow-up
+          show_state: false
+          show_name: false
+          styles:
+            card:
+              - box-shadow: none
+              - background: none
+              - display: flex
+              - flex-direction: column
+              - justify-content: flex-start
+              - align-items: center
+            icon:
+              - border-radius: 13px
+              - width: 23px
+              - height: 23px
+              - padding: 8px
+              - color: >
+                  [[[ return variables.current_position == 100 ? "#808080" :
+                  "#2196f3";
+
+                  ]]]
+              - background-color: >
+                  [[[ return variables.current_position == 100 ? "#80808025" :
+                  "#1d3447"; ]]]
+          tap_action:
+            action: perform-action
+            perform_action: cover.open_cover
+            target:
+              entity_id: '[[cover]]'
+            haptic: success
+          hold_action:
+            action: none
+          double_tap_action:
+            action: none
+          extra_styles: |
+            ha-card {
+              border: none;
+              background: none;
+            }
 #template de la carte minigraph dans les popups
   template_mini_graph_card:
     card:
