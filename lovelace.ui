@@ -1,4 +1,184 @@
 decluttering_templates:
+  template_opening_card:
+    card:
+      type: custom:button-card
+      entity: '[[entity]]'
+      show_state: false
+      name: '[[name]]'
+      styles:
+        card:
+          - box-shadow: none
+          - background: none
+          - display: flex
+          - flex-direction: column
+          - justify-content: flex-start
+          - align-items: center
+        icon:
+          - border-radius: 50px
+          - width: 23px
+          - height: 23px
+          - padding: 8px
+        name:
+          - font-size: 14px
+          - text-align: center
+          - font-family: Roboto
+          - font-weight: 411
+          - margin-top: 11px
+        state:
+          - font-size: 12px
+          - text-align: center
+      state:
+        - value: 'off'
+          styles:
+            icon:
+              - color: '#47a24c'
+              - background-color: '#263a27'
+        - value: 'on'
+          styles:
+            icon:
+              - color: '#f44336'
+              - background-color: '#482422'
+      tap_action:
+        action: more-info
+      layout: vertical
+      extra_styles: |
+        ha-card {
+          border: none;
+          background: none;
+        }
+  template_entity_card:
+    card:
+      type: custom:button-card
+      entity: '[[entity]]'
+      show_state: false
+      name: '[[name]]'
+      styles:
+        card:
+          - box-shadow: none
+          - background: none
+          - display: flex
+          - flex-direction: column
+          - justify-content: flex-start
+          - align-items: center
+        icon:
+          - border-radius: 50px
+          - width: 23px
+          - height: 23px
+          - padding: 8px
+        name:
+          - font-size: 14px
+          - text-align: center
+          - font-family: Roboto
+          - font-weight: 411
+          - margin-top: 11px
+        state:
+          - font-size: 12px
+          - text-align: center
+      state:
+        - value: paused
+          styles:
+            icon:
+              - color: '#2196f3'
+              - background-color: '#1d3447'
+        - value: played
+          styles:
+            icon:
+              - color: '#2196f3'
+              - background-color: '#1d3447'
+        - value: 'on'
+          styles:
+            icon:
+              - color: '#2196f3'
+              - background-color: '#1d3447'
+        - value: 'off'
+          styles:
+            icon:
+              - color: '#808080'
+              - background-color: '#80808025'
+        - value: unavailable
+          styles:
+            icon:
+              - color: '#80808050'
+              - background-color: '#80808025'
+      tap_action:
+        action: toggle
+      hold_action:
+        action: more-info
+      layout: vertical
+      extra_styles: |
+        ha-card {
+          border: none;
+          background: none;
+        }
+  template_alarm_card:
+    card:
+      type: custom:button-card
+      entity: '[[entity]]'
+      show_state: true
+      name: '[[name]]'
+      styles:
+        card:
+          - box-shadow: none
+          - background: none
+          - display: flex
+          - flex-direction: column
+          - justify-content: flex-start
+          - align-items: center
+        icon:
+          - border-radius: 50px
+          - width: 23px
+          - height: 23px
+          - padding: 8px
+        name:
+          - font-size: 14px
+          - text-align: center
+          - font-family: Roboto
+          - font-weight: 411
+          - margin-top: 11px
+        state:
+          - font-size: 12px
+          - text-align: center
+      state:
+        - value: disarmed
+          styles:
+            icon:
+              - color: '#2196f3'
+              - background-color: '#1d3447'
+        - value: armed_away
+          styles:
+            icon:
+              - color: '#47a24c'
+              - background-color: '#263a27'
+        - value: armed_night
+          styles:
+            icon:
+              - color: '#47a24c'
+              - background-color: '#263a27'
+        - value: triggered
+          styles:
+            icon:
+              - color: '#f44336'
+              - background-color: '#482422'
+              - animation: blinking 0.5s infinite
+      extra_styles: |
+        ha-card {
+          border: none;
+          background: none;
+        }
+        @keyframes blinking {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      tap_action:
+        action: more-info
+      layout: vertical
   template_custom_button_room_card:
     card:
       type: custom:button-card
