@@ -46,8 +46,7 @@ Update 2 : affichage de la temperature des pieces directement sur la room card r
 Update 3 : suppression de card_mod de la carte de commande de volet avec modification 100% = ouvert, 0% = fermé<br>
 Update 4 : modification complète de la carte volets suppression de card mod et mushroom card tout en gardant le style mushroom et garant les fonctions deja présentent<br>
 Update 5 : suppression et remplacement des carte custom:mushroom-entity-card par template_entity_card (pour toutes entités du bleu par defaut de ha pour on et grise pour off) et template_opening_card (pour les capteurs d'ouverture ou autre icon verte pour fermé et rouge pour ouvert) , custom:mushroom-alarm-control-panel-card par template_alarm_card dans les popup afin de continuer la suppression de card mod<br><br>
-Update en cour suppression de card mod<br><br>
-<br><br>
+Update en cour suppression de card mod (attention les cartes mini graph montre un bug avec la dernière version de card_mod)<br><br>
 Instalation du dashboard:<br><br>
 Dans home assistant cliquer sur le crayon pour modifier le dashboard en haut à droite<br>
 <img src="https://i.gyazo.com/94495911cb00a289e33ccccaa2199985.png" alt="Description" width="200"/><br>
