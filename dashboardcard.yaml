@@ -105,6 +105,7 @@ variables:
   - content_light_1_top_right: null
   - entity_cover: cover.volet_chambre_parentale
   - navigation: '#chambre_parentale'
+  - thermostat: '#thermostat_parentale'
   
 #carte chamnre d'amis
 type: custom:decluttering-card
