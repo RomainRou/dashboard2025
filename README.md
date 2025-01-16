@@ -21,7 +21,8 @@ Addon:
   - fold-entity-row ( https://github.com/thomasloven/lovelace-fold-entity-row ) #menu dans les popup
   - button-card ( https://github.com/custom-cards/button-card ) #carte principale
   - custom-icon (https://github.com/Mariusthvdb/custom-icons) #icon dynamique volets
-  - pronote-card (https://github.com/delphiki/lovelace-pronote) #carte pronote, elles ne sont pas entierement changer en attente de dispo aupres du dev  
+  - pronote-card (https://github.com/delphiki/lovelace-pronote) #carte pronote, elles ne sont pas entierement changer en attente de dispo aupres du dev
+  - simple thermostat (https://github.com/nervetattoo/simple-thermostat) #carte pour les thermostat
   - frigate-card (https://github.com/dermotduffy/frigate-hass-card/) #carte camera<br><br>
 Integrations :
   - meteo france (pour afficher la meteo)
@@ -45,7 +46,8 @@ pour l'icone des volet sur la gauche:<br>
 Update 2 : affichage de la temperature des pieces directement sur la room card reseigner par la ligne: - sensor_temp dans les cartes <br>
 Update 3 : suppression de card_mod de la carte de commande de volet avec modification 100% = ouvert, 0% = fermé<br>
 Update 4 : modification complète de la carte volets suppression de card mod et mushroom card tout en gardant le style mushroom et garant les fonctions deja présentent<br>
-Update 5 : suppression et remplacement des carte custom:mushroom-entity-card par template_entity_card (pour toutes entités du bleu par defaut de ha pour on et grise pour off) et template_opening_card (pour les capteurs d'ouverture ou autre icon verte pour fermé et rouge pour ouvert) , custom:mushroom-alarm-control-panel-card par template_alarm_card dans les popup afin de continuer la suppression de card mod<br><br>
+Update 5 : suppression et remplacement des carte custom:mushroom-entity-card par template_entity_card (pour toutes entités du bleu par defaut de ha pour on et grise pour off) et template_opening_card (pour les capteurs d'ouverture ou autre icon verte pour fermé et rouge pour ouvert) , custom:mushroom-alarm-control-panel-card par template_alarm_card dans les popup afin de continuer la suppression de card mod<br>
+Update 6 : ajout de la temperature et du taux d'humidité de la pièce sur la carte du dashboard renseignable dans les cartes par les variables: - temp: et - humidity: ,si vous avez des thermostat la temperature est cliquable et renvoie vers un popup qui affiche le thermostatde la piece<br><br>
 Update en cour suppression de card mod (attention les cartes mini graph montre un bug avec la dernière version de card_mod)<br><br>
 Instalation du dashboard:<br><br>
 Dans home assistant cliquer sur le crayon pour modifier le dashboard en haut à droite<br>
