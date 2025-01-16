@@ -1,3 +1,13 @@
+#popup thermostat
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#thermostat_parentale"
+  - type: custom:decluttering-card
+    template: template_thermostat_card
+    variables:
+      - climate: climate.thermostat_parentale
 #popup meteo
 type: vertical-stack
 cards:
