@@ -214,26 +214,92 @@ decluttering_templates:
       tap_action:
         action: more-info
       layout: vertical
+#template de la room card
   template_custom_button_room_card:
     card:
       type: custom:button-card
       tap_action:
         action: navigate
-        navigation_path: '[[navigation]]' #adresse du popup ne pas modifier ici
+        navigation_path: '[[navigation]]'
         haptic: success
       show_icon: false
       aspect_ratio: 6/1
-      name: '[[title]]' #titre de la carte ne pas modifier ici
+      entity: '[[entity_ville]]'
+      name: '[[title]]'
       custom_fields:
         chip_card_right_top:
           card:
             type: custom:mushroom-chips-card
+            alignment: end
             chips:
-              
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_1_top_right]]' #entité afficher a gauche avec condition on ou recording ne pas modifier ici
+                    entity: '[[group_light]]'
+                    state:
+                      - recording
+                      - 'on'
+                  - condition: state
+                    entity: '[[group_light]]'
+                    state_not: unavailable
+                chip:
+                  type: template
+                  entity: '[[group_light]]'
+                  icon: >-
+                    {% if states['[[group_light]]'].attributes['icon'] %}
+                      {{ states['[[group_light]]'].attributes['icon'] }}
+                    {% elif states['[[group_light]]'].attributes['device_class']
+                    %}
+                      mdi:{{ states['[[group_light]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: '#03a9f4'
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  tap_action:
+                    action: none
+                  content: >-
+                    {{ expand('[[group_light]]') | selectattr('state', 'eq',
+                    'on') | list | length }}
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: '[[group_prises]]'
+                    state:
+                      - recording
+                      - 'on'
+                  - condition: state
+                    entity: '[[group_prises]]'
+                    state_not: unavailable
+                chip:
+                  type: template
+                  entity: '[[group_prises]]'
+                  icon: >-
+                    {% if states['[[group_prises]]'].attributes['icon'] %}
+                      {{ states['[[group_prises]]'].attributes['icon'] }}
+                    {% elif
+                    states['[[group_prises]]'].attributes['device_class'] %}
+                      mdi:{{ states['[[group_prises]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: '#03a9f4'
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  tap_action:
+                    action: none
+                  content: >-
+                    {{ expand('[[group_prises]]') | selectattr('state', 'eq',
+                    'on') | list | length }}
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: '[[entity_1_right]]'
                     state:
                       - recording
                       - 'on'
@@ -245,27 +311,25 @@ decluttering_templates:
                     action: none
                   double_tap_action:
                     action: none
-                  entity: '[[entity_1_top_right]]'
+                  entity: '[[entity_1_right]]'
                   icon: >
-                    {% if states['[[entity_1_top_right]]'].attributes['icon'] %}
-                    {{ states['[[entity_1_top_right]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[entity_1_top_right]]'].attributes['device_class']
-                    %}
-                      mdi:{{ states['[[entity_1_top_right]]'].attributes['device_class'] }}
+                    {% if states['[[entity_1_right]]'].attributes['icon'] %} {{
+                    states['[[entity_1_right]]'].attributes['icon'] }} {% elif
+                    states['[[entity_1_right]]'].attributes['device_class'] %}
+                      mdi:{{ states['[[entity_1_right]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[entity_1_top_right]]', 'on') or
-                    is_state('[[entity_1_top_right]]', 'recording') %}
-                     [[entity_1_icon_color_top_right]]
+                    {% if is_state('[[entity_1_right]]', 'on') or
+                    is_state('[[entity_1_right]]', 'recording') %}
+                     [[entity_1_icon_color_right]]
                     {% endif %}
-                  content: '[[content_1_top_right]]'
+                  content: '[[content_1_right]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_2_top_right]]' #entité afficher a gauche avec condition on ou recording ne pas modifier ici
+                    entity: '[[entity_2_right]]'
                     state:
                       - recording
                       - 'on'
@@ -277,27 +341,25 @@ decluttering_templates:
                     action: none
                   double_tap_action:
                     action: none
-                  entity: '[[entity_2_top_right]]'
+                  entity: '[[entity_2_right]]'
                   icon: >
-                    {% if states['[[entity_2_top_right]]'].attributes['icon'] %}
-                    {{ states['[[entity_2_top_right]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[entity_2_top_right]]'].attributes['device_class']
-                    %}
-                      mdi:{{ states['[[entity_2_top_right]]'].attributes['device_class'] }}
+                    {% if states['[[entity_2_right]]'].attributes['icon'] %} {{
+                    states['[[entity_2_right]]'].attributes['icon'] }} {% elif
+                    states['[[entity_2_right]]'].attributes['device_class'] %}
+                      mdi:{{ states['[[entity_2_right]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[entity_2_top_right]]', 'on') or
-                    is_state('[[entity_2_top_right]]', 'recording') %}
-                     [[entity_2_icon_color_top_right]]
+                    {% if is_state('[[entity_2_right]]', 'on') or
+                    is_state('[[entity_2_right]]', 'recording') %}
+                     [[entity_2_icon_color_right]]
                     {% endif %}
-                  content: '[[content_2_top_right]]'
+                  content: '[[content_2_right]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_3_top_right]]'
+                    entity: '[[entity_3_right]]'
                     state:
                       - recording
                       - 'on'
@@ -309,27 +371,25 @@ decluttering_templates:
                     action: none
                   double_tap_action:
                     action: none
-                  entity: '[[entity_3_top_right]]' #entité afficher a gauche avec condition on ou recording ne pas modifier ici
+                  entity: '[[entity_3_right]]'
                   icon: >
-                    {% if states['[[entity_3_top_right]]'].attributes['icon'] %}
-                    {{ states['[[entity_3_top_right]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[entity_3_top_right]]'].attributes['device_class']
-                    %}
-                      mdi:{{ states['[[entity_3_top_right]]'].attributes['device_class'] }}
+                    {% if states['[[entity_3_right]]'].attributes['icon'] %} {{
+                    states['[[entity_3_right]]'].attributes['icon'] }} {% elif
+                    states['[[entity_3_right]]'].attributes['device_class'] %}
+                      mdi:{{ states['[[entity_3_right]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[entity_3_top_right]]', 'on') or
-                    is_state('[[entity_3_top_right]]', 'recording') %}
-                     [[entity_3_icon_color_top_right]]
+                    {% if is_state('[[entity_3_right]]', 'on') or
+                    is_state('[[entity_3_right]]', 'recording') %}
+                     [[entity_3_icon_color_right]]
                     {% endif %}
-                  content: '[[content_3_top_right]]'
+                  content: '[[content_3_right]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[light_1_top_right]]' #entité lumiere afficher a gauche avec condition on et extinction direct depuis la carte principale ne pas modifier ici
+                    entity: '[[light_1_top_right]]'
                     state:
                       - 'on'
                 chip:
@@ -355,13 +415,13 @@ decluttering_templates:
                   icon_color: >
                     {% if is_state('[[light_1_top_right]]', 'on') or
                     is_state('[[light_1_top_right]]', 'recording') %}
-                     [[light_1_icon_color_top_right]]
+                     #03a9f4
                     {% endif %}
                   content: '[[content_light_1_top_right]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[light_2_top_right]]' #entité lumiere afficher a gauche avec condition on et extinction direct depuis la carte principale ne pas modifier ici
+                    entity: '[[light_2_top_right]]'
                     state:
                       - 'on'
                 chip:
@@ -387,13 +447,13 @@ decluttering_templates:
                   icon_color: >
                     {% if is_state('[[light_2_top_right]]', 'on') or
                     is_state('[[light_2_top_right]]', 'recording') %}
-                     [[light_1_icon_color_top_right]]
+                     #03a9f4
                     {% endif %}
                   content: '[[content_light_2_top_right]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[light_3_top_right]]' #entité lumiere afficher a gauche avec condition on et extinction direct depuis la carte principale ne pas modifier ici
+                    entity: '[[light_3_top_right]]'
                     state:
                       - 'on'
                 chip:
@@ -419,20 +479,64 @@ decluttering_templates:
                   icon_color: >
                     {% if is_state('[[light_3_top_right]]', 'on') or
                     is_state('[[light_3_top_right]]', 'recording') %}
-                     [[entity_3_icon_color_top_right]]
+                     #03a9f4
                     {% endif %}
                   content: '[[content_light_3_top_right]]'
         chip_card_left_top:
           card:
             type: custom:mushroom-chips-card
+            alignment: end
             chips:
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_cover]]' #afficher a droite sans condition pour les volets avec icon adaptative a la position (reste afficher) ne pas modifier ici
-                    state:
-                      - open
-                      - closed
+                    entity: '[[cover_group]]'
+                    state_not: unavailable
+                chip:
+                  type: template
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  icon: >-
+                    {% set position =
+                    states['[[cover_group]]'].attributes.current_position | int
+                    %} {% if position == 100 %}
+                      cil:shutter-0
+                    {% elif position >= 75 %}
+                      cil:shutter-1
+                    {% elif position >= 50 %}
+                      cil:shutter-2
+                    {% elif position >= 25 %}
+                      cil:shutter-3
+                    {% elif position >= 0 %}
+                      cil:shutter-4
+                    {% else %}
+                      mdi:window-shutter-closed
+                    {% endif %}
+                  icon_color: '#03a9f4'
+                  content: |
+                    {% if expand("[[cover_group]]") | length > 0 %}
+                      {% set all = expand("[[cover_group]]" | lower) -%} 
+                      {% set positions = all | map(attribute='attributes.current_position') | list -%}
+                      {% set fermes = positions | reject("!=", 0) | list | count %}
+                      {% set ouverts = positions | reject("!=", 100) | list | count %}
+                      {% set partiels = positions | list | count - ouverts - fermes %}
+                      {%- if fermes > 0 %} F:{{ fermes }} {%- endif %} 
+                      {%- if partiels > 0 %} P:{{ partiels }} {%- endif %} 
+                      {%- if ouverts > 0 %} O:{{ ouverts }} {%- endif %}
+                    {% else %}
+                      {% set position = states['[[cover]]'].attributes.current_position | int %}
+                      {% if position > 0 %} {{ position }}% {% endif %}
+                    {% endif %}
+                  entity: '[[cover_group]]'
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: '[[entity_cover]]'
+                    state_not: unavailable
                 chip:
                   type: template
                   tap_action:
@@ -457,60 +561,29 @@ decluttering_templates:
                     {% else %}
                       mdi:window-shutter-closed
                     {% endif %}
-                  icon_color: '[[entity_cover_icon_color]]'
+                  icon_color: '#03a9f4'
                   entity: '[[entity_cover]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_alarme]]' #entité afficher a droite pour une alarme avec affichage sous condition avec desarmement direct depuis la carte principale ne pas modifier ici
-                    state:
-                      - armed_away
-                      - armed_night
-                      - triggered
-                chip:
-                  type: alarm-control-panel
-                  entity: '[[entity_alarme]]'
-                  tap_action:
-                    action: perform-action
-                    perform_action: alarm_control_panel.alarm_disarm
-                    target:
-                      entity_id: '[[entity_alarme]]'
-                    data:
-                      code: '[[code_alarm]]'
-                  haptic: succes
-                  hold_action:
-                    action: none
-                  content_info: none
-              - type: conditional
-                conditions:
+                    entity: '[[capteur_bal]]'
+                    state_not: '0'
                   - condition: state
-                    entity: '[[entity_alarme]]'
-                    state:
-                      - armed_away
-                      - armed_night
-                      - triggered
+                    entity: '[[capteur_bal]]'
+                    state_not: unavailable
                 chip:
                   type: template
-                  tap_action:
-                    action: navigate
-                    navigation_path: '[[navigation_cam]]' #adresse du popup pour les cameras ne pas modifier ici
-                  hold_action:
-                    action: none
-                  double_tap_action:
-                    action: none
-                  entity: '[[entity_3_top_left]]' #entité afficher a droite pour une camera sous condition ne pas modifier ici
-                  icon: >
-                    {% if states['[[entity_3_top_left]]'].attributes['icon'] %}
-                    {{ states['[[entity_3_top_left]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[entity_3_top_left]]'].attributes['device_class']
-                    %}
-                      mdi:{{ states['[[entity_3_top_left]]'].attributes['device_class'] }}
-                    {% else %}
-                      mdi:device-unknown
+                  entity: '[[capteur_bal]]'
+                  icon: mdi:email-outline
+                  content: '{{ states(''[[capteur_bal]]'') }}'
+                  icon_color: |-
+                    {% if states('[[capteur_bal]]') | int > 0 %}        
+                      red
                     {% endif %}
-                  icon_color: [[entity_3_icon_color_top_left]]
-                  content: '[[content_3_top_left]]'
+                  tap_action:
+                    action: perform-action
+                    perform_action: script.mise_a_zero_boite_aux_lettres
+                    target: {}
         chip_card_center:
           card:
             type: conditional
@@ -566,9 +639,25 @@ decluttering_templates:
         card:
           - background-position: center
           - background-size: cover
-          - background: url('[[background_image]]') no-repeat center center #background des cartes ne pas modifier ici
+          - background: |
+              [[[ 
+                if (!'[[entity_ville]]') return "url('[[background_image]]') no-repeat center center / cover";
+                if (entity && entity.state === "sunny") return "url('https://i.pinimg.com/originals/d8/a2/ee/d8a2eee27b91f50078645085e4057f3c.gif') no-repeat center center / cover";
+                if (entity && entity.state === "snowy") return "url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzJ2Z2FzOTFnZWhkdTczOHg5MTU1enhweWR4b2JpemM4MGpmaWxibyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6fISORwH1fcsQW0U/giphy.gif') no-repeat center center / cover";
+                if (entity && entity.state === "snowy-rainy") return "url('https://www.icegif.com/wp-content/uploads/2022/01/icegif-1013.gif') no-repeat center center / cover";
+                if (entity && entity.state === "lightning-rainy") return "url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWFjZmp3YWVva2pzaWhuZ3hmcHF6b3dna2FkMGpwbXh0ZWZoMzBmMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKrt6z6Eg9MLvl6/giphy.gif') no-repeat center center / cover";
+                if (entity && entity.state === "lightning") return "url('https://media1.giphy.com/media/l0MYzA5czu7GV1Xt6/giphy.gif?cid=9b38fe919too4we4vrgbc57o3xqx0jjm9qi9w6f7gnh6h2sj&ep=v1_gifs_search&rid=giphy.gif&ct=g') no-repeat center center / cover";
+                if (entity && entity.state === "hail") return "url('https://i.gifer.com/DJxO.gif') no-repeat center center / cover";
+                if (entity && entity.state === "partlycloudy") return "url('https://i.gifer.com/g1vA.gif') no-repeat center center / cover";
+                if (entity && entity.state === "cloudy") return "url('https://i.gifer.com/g1vA.gif') no-repeat center center / cover";
+                if (entity && entity.state === "mostlycloudy") return "url('https://i.gifer.com/Lx0q.gif') no-repeat center center / cover";
+                if (entity && entity.state === "clear-night") return "url('https://i.gifer.com/IrS.gif') no-repeat center center / cover";
+                if (entity && entity.state === "fog") return "url('https://i.gifer.com/8AC8.gif') no-repeat center center / cover";
+                if (entity && entity.state === "rainy") return "url('https://i.gifer.com/FEuz.gif') no-repeat center center / cover";
+                return "url('[[background_image]]') no-repeat center center / cover";
+              ]]]         
         custom_fields:
-          chip_card_right:
+          chip_card_right_top:
             - position: absolute
             - right: 1%
           chip_card_left_top:
@@ -584,178 +673,6 @@ decluttering_templates:
             - left: 42%
             - transform: scale(0.7)
             - bottom: 0%
-  template_custom_button_weather_card:
-    card:
-      type: custom:button-card
-      tap_action:
-        action: navigate
-        navigation_path: '[[navigation]]' #adresse du popup ne pas modifier ici
-        haptic: success
-      show_icon: false
-      aspect_ratio: 6/1
-      entity: '[[entity_ville]]' #entité fourni par l'integration meteo
-      name: '[[title]]' # titre de la carte
-      custom_fields:
-        chip_card_right_top:
-          card:
-            type: custom:mushroom-chips-card
-            alignment: end
-            chips:
-              - type: conditional
-                conditions:
-                  - condition: state
-                    entity: '[[group_light]]' #groupe lumieres qui permet de savoir combien de lampes sont allumé dans le groupe affichage sous condition on
-                    state:
-                      - recording
-                      - 'on'
-                chip:
-                  type: template
-                  entity: '[[group_light]]'
-                  icon: >
-                    {% if states['[[group_light]]'].attributes['icon'] %}
-
-                    {{ states['[[group_light]]'].attributes['icon'] }}
-
-                    {% elif states['[[group_light]]'].attributes['device_class']
-                    %}
-                      mdi:{{ states['[[group_light]]'].attributes['device_class'] }}
-                    {% else %}
-                      mdi:device-unknown
-                    {% endif %}
-                  icon_color: '#03a9f4'
-                  hold_action:
-                    action: none
-                  double_tap_action:
-                    action: none
-                  tap_action:
-                    action: none
-                  content: >-
-                    {{ expand('[[group_light]]') | selectattr('state', 'eq',
-                    'on') | list | length }}
-              - type: conditional
-                conditions:
-                  - condition: state
-                    entity: '[[group_prises]]' #groupe prises qui permet de savoir combien de prises sont allumé dans le groupe affichage sous condition on
-                    state:
-                      - recording
-                      - 'on'
-                chip:
-                  type: template
-                  entity: '[[group_prises]]'
-                  icon: >
-                    {% if states['[[group_prises]]'].attributes['icon'] %}
-
-                    {{ states['[[group_prises]]'].attributes['icon'] }}
-
-                    {% elif
-                    states['[[group_prises]]'].attributes['device_class'] %}
-                      mdi:{{ states['[[group_prises]]'].attributes['device_class'] }}
-                    {% else %}
-                      mdi:device-unknown
-                    {% endif %}
-                  icon_color: '#03a9f4'
-                  hold_action:
-                    action: none
-                  double_tap_action:
-                    action: none
-                  tap_action:
-                    action: none
-                  content: >-
-                    {{ expand('[[group_prises]]') | selectattr('state', 'eq',
-                    'on') | list | length }}
-        chip_card_left_top:
-          card:
-            type: custom:mushroom-chips-card
-            alignment: end
-            chips:
-                #groupe volets qui permet de savoir combien de volet sont ouvert,fermé ou partiellement ouvert dans le groupe
-              - type: template
-                tap_action:
-                  action: none
-                hold_action:
-                  action: none
-                double_tap_action:
-                  action: none
-                icon: >-
-                  {% set position =
-                  states['[[cover_group]]'].attributes.current_position | int %}
-                  {% if position == 100 %}
-                    cil:shutter-0
-                  {% elif position >= 75 %}
-                    cil:shutter-1
-                  {% elif position >= 50 %}
-                    cil:shutter-2
-                  {% elif position >= 25 %}
-                    cil:shutter-3
-                  {% elif position >= 0 %}
-                    cil:shutter-4
-                  {% else %}
-                    mdi:window-shutter-closed
-                  {% endif %}
-                icon_color: '#03a9f4'
-                content: |
-                  {% if expand("[[cover_group]]") | length > 0 %}
-                    {% set all = expand("[[cover_group]]" | lower) -%} 
-                    {% set positions = all | map(attribute='attributes.current_position') | list -%}
-                    {% set fermes = positions | reject("!=", 0) | list | count %}
-                    {% set ouverts = positions | reject("!=", 100) | list | count %}
-                    {% set partiels = positions | list | count - ouverts - fermes %} {%- if fermes > 0 %} F:{{ fermes }} {%- endif %} 
-                    {%- if partiels > 0 %} P:{{ partiels }} {%- endif %} 
-                    {%- if ouverts > 0 %} O:{{ ouverts }} {%- endif %} {% else %} {% set position = states['[[cover]]'].attributes.current_position | int %} {% if position > 0 %} {{ position }}% {% endif %}
-                  {% endif %}
-                entity: '[[cover_group]]'
-              - type: conditional
-                conditions:
-                  - condition: state
-                    entity: '[[capteur_bal]]' #affichage du compteur boite aux lettres avec remise a zero direct depuis la carte principale
-                    state_not: '0'
-                chip:
-                  type: template
-                  entity: '[[capteur_bal]]'
-                  icon: mdi:email-outline
-                  content: '{{ states(''[[capteur_bal]]'') }}'
-                  icon_color: |-
-                    {% if states('[[capteur_bal]]') | int > 0 %}        
-                      red
-                    {% endif %}
-                  tap_action:
-                    action: perform-action
-                    perform_action: script.mise_a_zero_boite_aux_lettres
-                    target: {}
-      styles:
-        name:
-          - color: white
-          - font-weight: bold
-          - text-shadow: >-
-              1px 1px 3px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000, 1px
-              1px 2px
-        card:
-          - background-position: center
-          - background-size: cover
-          #background adaptatif de la carte meteo
-          - background-image: |
-              [[[ 
-                if (entity.state === "sunny") return "url('https://i.pinimg.com/originals/d8/a2/ee/d8a2eee27b91f50078645085e4057f3c.gif')";
-                if (entity.state === "snowy") return "url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzJ2Z2FzOTFnZWhkdTczOHg5MTU1enhweWR4b2JpemM4MGpmaWxibyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6fISORwH1fcsQW0U/giphy.gif')";
-                if (entity.state === "snowy-rainy") return "url('https://www.icegif.com/wp-content/uploads/2022/01/icegif-1013.gif')";
-                if (entity.state === "lightning-rainy") return "url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWFjZmp3YWVva2pzaWhuZ3hmcHF6b3dna2FkMGpwbXh0ZWZoMzBmMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKrt6z6Eg9MLvl6/giphy.gif')";
-                if (entity.state === "lightning") return "url('https://media1.giphy.com/media/l0MYzA5czu7GV1Xt6/giphy.gif?cid=9b38fe919too4we4vrgbc57o3xqx0jjm9qi9w6f7gnh6h2sj&ep=v1_gifs_search&rid=giphy.gif&ct=g')";
-                if (entity.state === "hail") return "url('https://i.gifer.com/DJxO.gif')";
-                if (entity.state === "partlycloudy") return "url('https://i.gifer.com/g1vA.gif')";
-                if (entity.state === "cloudy") return "url('https://i.gifer.com/g1vA.gif')";
-                if (entity.state === "mostlycloudy") return "url('https://i.gifer.com/Lx0q.gif')";
-                if (entity.state === "clear-night") return "url('https://i.gifer.com/IrS.gif')";
-                if (entity.state === "fog") return "url('https://i.gifer.com/8AC8.gif')";
-                if (entity.state === "rainy") return "url('https://i.gifer.com/FEuz.gif')";
-                return "none";
-              ]]]                  
-        custom_fields:
-          chip_card_right_top:
-            - position: absolute
-            - right: 1%
-          chip_card_left_top:
-            - position: absolute
-            - left: 1%
   template_custom_badges:
     card:
       type: custom:mushroom-template-badge
