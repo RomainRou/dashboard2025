@@ -17,9 +17,9 @@ Addon:
   - mushroom ( https://github.com/piitaya/lovelace-mushroom ) #theme general
   - card-mod ( https://github.com/thomasloven/lovelace-card-mod ) #seulement pour les popup ( en cours de suppression total)
   - bubble-card ( https://github.com/Clooos/Bubble-Card ) #pour les popup
-  <s>- mini-graph-card ( https://github.com/kalkih/mini-graph-card )</s> #graph dans les popup (plus utiliser depuis update 8)
+  - <s>mini-graph-card ( https://github.com/kalkih/mini-graph-card )</s> #graph dans les popup (plus utiliser depuis update 8)
   - decluttering card ( https://github.com/custom-cards/decluttering-card ) #pour le template des cartes
-  <s>- fold-entity-row ( https://github.com/thomasloven/lovelace-fold-entity-row )</s> #menu dans les popup (plus utiliser depuis update 8)
+  - <s>fold-entity-row ( https://github.com/thomasloven/lovelace-fold-entity-row )</s> #menu dans les popup (plus utiliser depuis update 8)
   - button-card ( https://github.com/custom-cards/button-card ) #carte principale
   - custom-icon (https://github.com/Mariusthvdb/custom-icons) #icon dynamique volets
   - pronote-card (https://github.com/delphiki/lovelace-pronote) #carte pronote, elles ne sont pas entierement changer en attente de dispo aupres du dev
