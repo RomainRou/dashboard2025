@@ -9,16 +9,17 @@ dashboard et popup pc<br>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%204.png" alt="Description" width="400"/><br><br>
 dashboard et popup telephone<br>
 <img src="https://github.com/RomainRou/dashboard2025/blob/main/dashboard%20tel%201.jpeg" alt="Description" width="150"/>
-<img src="https://github.com/RomainRou/dashboard2025/blob/main/popup%20tel.jpeg" alt="Description" width="150"/><br><br>
+<img src="https://github.com/RomainRou/dashboard2025/blob/main/popup%20tel.jpeg" alt="Description" width="150"/><br>
+Atention screen pris avant update 1 certaines choses ont pu changer visuellement depuis<br><br>
 Addon: 
   - lovelace-meteofrance-weather-card ( https://github.com/hacf-fr/lovelace-meteofrance-weather-card ) #popup meteo
   - tabbed card (uniquement si pronote est utiliser)( https://github.com/kinghat/tabbed-card ) #tableau pronote
   - mushroom ( https://github.com/piitaya/lovelace-mushroom ) #theme general
-  - card-mod ( https://github.com/thomasloven/lovelace-card-mod ) #seulement pour les popup 
+  - card-mod ( https://github.com/thomasloven/lovelace-card-mod ) #seulement pour les popup ( en cours de suppression total)
   - bubble-card ( https://github.com/Clooos/Bubble-Card ) #pour les popup
-  - mini-graph-card ( https://github.com/kalkih/mini-graph-card ) #graph dans les popup
+  <s>- mini-graph-card ( https://github.com/kalkih/mini-graph-card )</s> #graph dans les popup (plus utiliser depuis update 8)
   - decluttering card ( https://github.com/custom-cards/decluttering-card ) #pour le template des cartes
-  - fold-entity-row ( https://github.com/thomasloven/lovelace-fold-entity-row ) #menu dans les popup
+  <s>- fold-entity-row ( https://github.com/thomasloven/lovelace-fold-entity-row )</s> #menu dans les popup (plus utiliser depuis update 8)
   - button-card ( https://github.com/custom-cards/button-card ) #carte principale
   - custom-icon (https://github.com/Mariusthvdb/custom-icons) #icon dynamique volets
   - pronote-card (https://github.com/delphiki/lovelace-pronote) #carte pronote, elles ne sont pas entierement changer en attente de dispo aupres du dev
