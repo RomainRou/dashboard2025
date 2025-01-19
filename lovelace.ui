@@ -109,6 +109,13 @@ decluttering_templates:
         state:
           - font-size: 12px
           - text-align: center
+        custom_fields:
+          sensor:
+            - position: absolute
+            - font-size: 12px
+            - font-family: Roboto
+            - left: 47%
+            - bottom: 0%
       state:
         - value: paused
           styles:
@@ -140,6 +147,15 @@ decluttering_templates:
       hold_action:
         action: more-info
       layout: vertical
+      custom_fields:
+        sensor: |
+          [[[
+            if ('[[sensor_power]]' && states['[[sensor_power]]']) {
+              return states['[[sensor_power]]'].state + (states['[[sensor_power]]'].attributes.unit_of_measurement ? ' ' + states['[[sensor_power]]'].attributes.unit_of_measurement : '');
+            } else {
+              return '';
+            }
+          ]]]
       extra_styles: |
         ha-card {
           border: none;
