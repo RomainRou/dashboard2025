@@ -621,6 +621,37 @@ decluttering_templates:
               - type: conditional
                 conditions:
                   - condition: state
+                    entity: '[[entity_camera]]'
+                    state:
+                      - recording
+                      - 'on'
+                chip:
+                  type: template
+                  tap_action:
+                    action: navigate
+                    navigation_path: '[[navigation_cam]]'
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  entity: '[[entity_camera]]'
+                  icon: >
+                    {% if states['[[entity_camera]]'].attributes['icon'] %} {{
+                    states['[[entity_camera]]'].attributes['icon'] }} {% elif
+                    states['[[entity_camera]]'].attributes['device_class'] %}
+                      mdi:{{ states['[[entity_camera]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: >
+                    {% if is_state('[[entity_camera]]', 'on') or
+                    is_state('[[entity_camera]', 'recording') %}
+                     [[entity_color_camera]]
+                    {% endif %}
+                  content: '[[content_camera]]'
+              - type: conditional
+                conditions:
+                  - condition: state
                     entity: '[[entity_1_top_left]]'
                     state:
                       - recording
