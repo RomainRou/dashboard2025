@@ -582,6 +582,24 @@ decluttering_templates:
               - type: conditional
                 conditions:
                   - condition: state
+                    entity: '[[entity_alarme]]'
+                    state:
+                      - armed_away
+                      - armed_night
+                chip:
+                  type: alarm-control-panel
+                  entity: '[[entity_alarme]]'
+                  tap_action:
+                    action: perform-action
+                    perform_action: alarm_control_panel.alarm_disarm
+                    target:
+                      entity_id: '[[entity_alarme]]'
+                    data:
+                      code: '[[code_alarm]]'
+                  content_info: none
+              - type: conditional
+                conditions:
+                  - condition: state
                     entity: '[[capteur_bal]]'
                     state_not: '0'
                   - condition: state
@@ -600,6 +618,102 @@ decluttering_templates:
                     action: perform-action
                     perform_action: script.mise_a_zero_boite_aux_lettres
                     target: {}
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: '[[entity_1_top_left]]'
+                    state:
+                      - recording
+                      - 'on'
+                chip:
+                  type: template
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  entity: '[[entity_1_top_left]]'
+                  icon: >
+                    {% if states['[[entity_1_top_left]]'].attributes['icon'] %}
+                    {{ states['[[entity_1_top_left]]'].attributes['icon'] }} {%
+                    elif
+                    states['[[entity_1_top_left]]'].attributes['device_class']
+                    %}
+                      mdi:{{ states['[[entity_1_top_left]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: >
+                    {% if is_state('[[entity_1_top_left]]', 'on') or
+                    is_state('[[entity_1_top_left]]', 'recording') %}
+                     [[entity_1_icon_color_top_left]]
+                    {% endif %}
+                  content: '[[content_1_top_left]]'
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: '[[entity_2_top_left]]'
+                    state:
+                      - recording
+                      - 'on'
+                chip:
+                  type: template
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  entity: '[[entity_2_top_left]]'
+                  icon: >
+                    {% if states['[[entity_2_top_left]]'].attributes['icon'] %}
+                    {{ states['[[entity_2_top_left]]'].attributes['icon'] }} {%
+                    elif
+                    states['[[entity_2_top_left]]'].attributes['device_class']
+                    %}
+                      mdi:{{ states['[[entity_2_top_left]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: >
+                    {% if is_state('[[entity_2_top_left]]', 'on') or
+                    is_state('[[entity_2_top_left]]', 'recording') %}
+                     [[entity_2_icon_color_top_left]]
+                    {% endif %}
+                  content: '[[content_2_top_left]]'
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: '[[entity_3_top_left]]'
+                    state:
+                      - recording
+                      - 'on'
+                chip:
+                  type: template
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  entity: '[[entity_3_top_left]]'
+                  icon: >
+                    {% if states['[[entity_3_top_left]]'].attributes['icon'] %}
+                    {{ states['[[entity_3_top_left]]'].attributes['icon'] }} {%
+                    elif
+                    states['[[entity_3_top_left]]'].attributes['device_class']
+                    %}
+                      mdi:{{ states['[[entity_3_top_left]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: >
+                    {% if is_state('[[entity_3_top_left]]', 'on') or
+                    is_state('[[entity_3_top_left]]', 'recording') %}
+                     [[entity_3_icon_color_top_left]]
+                    {% endif %}
+                  content: '[[content_3_top_left]]'
         chip_card_center:
           card:
             type: conditional
