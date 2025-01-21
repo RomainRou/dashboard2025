@@ -51,9 +51,9 @@ Update 5 : suppression et remplacement des carte custom:mushroom-entity-card par
 Update 6 : ajout de la temperature et du taux d'humidité de la pièce sur la carte du dashboard renseignable dans les cartes par les variables: - temp: et - humidity: ,si vous avez des thermostat la temperature est cliquable et renvoie vers un popup qui affiche le thermostatde la piece<br>
 Update 7 : fusion de la room card et de la weather card afin de n'avoir qu'une seul carte mais regroupant les fonctions des 2 cartes , ajustement de la tailles des backgrounds<br>
 Update 8 : suppresion des cartes mini graph en raison d'un probleme avec card mod , les infos qui se travais dans la carte se retrouve sur la carte du dashboard et dans la carte entity a renseigner avec la variable - sensor_power: si vous souhaiter avoir l'information de consommation et suppression des cartes fold entity row de la systeme<br>
-Update 9 : quelques modifications mineure optimisation et nettoyage du code<br><br>
-Update en cour suppression de card mod<br>
+Update 9 : quelques modifications mineure optimisation et nettoyage du code<br>
 Update 10 : modification de certains nom d'entitées nettoyage du code et optimisation<br><br>
+Update en cour suppression de card mod<br>
 Instalation du dashboard:<br><br>
 Dans home assistant cliquer sur le crayon pour modifier le dashboard en haut à droite<br>
 <img src="https://i.gyazo.com/94495911cb00a289e33ccccaa2199985.png" alt="Description" width="200"/><br>
