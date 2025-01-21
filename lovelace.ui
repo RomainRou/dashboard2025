@@ -243,7 +243,7 @@ decluttering_templates:
       entity: '[[entity_ville]]'
       name: '[[title]]'
       custom_fields:
-        chip_card_right_top:
+        chip_card_right:
           card:
             type: custom:mushroom-chips-card
             alignment: end
@@ -405,7 +405,7 @@ decluttering_templates:
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[light_1_top_right]]'
+                    entity: '[[light_1_right]]'
                     state:
                       - 'on'
                 chip:
@@ -417,27 +417,27 @@ decluttering_templates:
                     action: none
                   double_tap_action:
                     action: none
-                  entity: '[[light_1_top_right]]'
+                  entity: '[[light_1_right]]'
                   icon: >
-                    {% if states['[[light_1_top_right]]'].attributes['icon'] %}
-                    {{ states['[[light_1_top_right]]'].attributes['icon'] }} {%
+                    {% if states['[[light_1_right]]'].attributes['icon'] %}
+                    {{ states['[[light_1_right]]'].attributes['icon'] }} {%
                     elif
-                    states['[[light_1_top_right]]'].attributes['device_class']
+                    states['[[light_1_right]]'].attributes['device_class']
                     %}
-                      mdi:{{ states['[[light_1_top_right]]'].attributes['device_class'] }}
+                      mdi:{{ states['[[light_1_right]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[light_1_top_right]]', 'on') or
-                    is_state('[[light_1_top_right]]', 'recording') %}
+                    {% if is_state('[[light_1_right]]', 'on') or
+                    is_state('[[light_1_right]]', 'recording') %}
                      #03a9f4
                     {% endif %}
-                  content: '[[content_light_1_top_right]]'
+                  content: '[[content_light_1_right]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[light_2_top_right]]'
+                    entity: '[[light_2_right]]'
                     state:
                       - 'on'
                 chip:
@@ -449,27 +449,27 @@ decluttering_templates:
                     action: none
                   double_tap_action:
                     action: none
-                  entity: '[[light_2_top_right]]'
+                  entity: '[[light_2_right]]'
                   icon: >
-                    {% if states['[[light_2_top_right]]'].attributes['icon'] %}
-                    {{ states['[[light_2_top_right]]'].attributes['icon'] }} {%
+                    {% if states['[[light_2_right]]'].attributes['icon'] %}
+                    {{ states['[[light_2_right]]'].attributes['icon'] }} {%
                     elif
-                    states['[[light_2_top_right]]'].attributes['device_class']
+                    states['[[light_2_right]]'].attributes['device_class']
                     %}
-                      mdi:{{ states['[[light_2_top_right]]'].attributes['device_class'] }}
+                      mdi:{{ states['[[light_2_right]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[light_2_top_right]]', 'on') or
-                    is_state('[[light_2_top_right]]', 'recording') %}
+                    {% if is_state('[[light_2_right]]', 'on') or
+                    is_state('[[light_2_right]]', 'recording') %}
                      #03a9f4
                     {% endif %}
-                  content: '[[content_light_2_top_right]]'
+                  content: '[[content_light_2_right]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[light_3_top_right]]'
+                    entity: '[[light_3_right]]'
                     state:
                       - 'on'
                 chip:
@@ -481,24 +481,24 @@ decluttering_templates:
                     action: none
                   double_tap_action:
                     action: none
-                  entity: '[[light_3_top_right]]'
+                  entity: '[[light_3_right]]'
                   icon: >
-                    {% if states['[[light_3_top_right]]'].attributes['icon'] %}
-                    {{ states['[[light_3_top_right]]'].attributes['icon'] }} {%
+                    {% if states['[[light_3_right]]'].attributes['icon'] %}
+                    {{ states['[[light_3_right]]'].attributes['icon'] }} {%
                     elif
-                    states['[[light_3_top_right]]'].attributes['device_class']
+                    states['[[light_3_right]]'].attributes['device_class']
                     %}
-                      mdi:{{ states['[[light_3_top_right]]'].attributes['device_class'] }}
+                      mdi:{{ states['[[light_3_right]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[light_3_top_right]]', 'on') or
-                    is_state('[[light_3_top_right]]', 'recording') %}
+                    {% if is_state('[[light_3_right]]', 'on') or
+                    is_state('[[light_3_right]]', 'recording') %}
                      #03a9f4
                     {% endif %}
-                  content: '[[content_light_3_top_right]]'
-        chip_card_left_top:
+                  content: '[[content_light_3_right]]'
+        chip_card_left:
           card:
             type: custom:mushroom-chips-card
             alignment: end
@@ -652,7 +652,7 @@ decluttering_templates:
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_1_top_left]]'
+                    entity: '[[entity_1_left]]'
                     state:
                       - recording
                       - 'on'
@@ -664,27 +664,27 @@ decluttering_templates:
                     action: none
                   double_tap_action:
                     action: none
-                  entity: '[[entity_1_top_left]]'
+                  entity: '[[entity_1_left]]'
                   icon: >
-                    {% if states['[[entity_1_top_left]]'].attributes['icon'] %}
-                    {{ states['[[entity_1_top_left]]'].attributes['icon'] }} {%
+                    {% if states['[[entity_1_left]]'].attributes['icon'] %}
+                    {{ states['[[entity_1_left]]'].attributes['icon'] }} {%
                     elif
-                    states['[[entity_1_top_left]]'].attributes['device_class']
+                    states['[[entity_1_left]]'].attributes['device_class']
                     %}
-                      mdi:{{ states['[[entity_1_top_left]]'].attributes['device_class'] }}
+                      mdi:{{ states['[[entity_1_left]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[entity_1_top_left]]', 'on') or
-                    is_state('[[entity_1_top_left]]', 'recording') %}
-                     [[entity_1_icon_color_top_left]]
+                    {% if is_state('[[entity_1_left]]', 'on') or
+                    is_state('[[entity_1_left]]', 'recording') %}
+                     [[entity_1_icon_color_left]]
                     {% endif %}
-                  content: '[[content_1_top_left]]'
+                  content: '[[content_1_left]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_2_top_left]]'
+                    entity: '[[entity_2_left]]'
                     state:
                       - recording
                       - 'on'
@@ -696,27 +696,27 @@ decluttering_templates:
                     action: none
                   double_tap_action:
                     action: none
-                  entity: '[[entity_2_top_left]]'
+                  entity: '[[entity_2_left]]'
                   icon: >
-                    {% if states['[[entity_2_top_left]]'].attributes['icon'] %}
-                    {{ states['[[entity_2_top_left]]'].attributes['icon'] }} {%
+                    {% if states['[[entity_2_left]]'].attributes['icon'] %}
+                    {{ states['[[entity_2_left]]'].attributes['icon'] }} {%
                     elif
-                    states['[[entity_2_top_left]]'].attributes['device_class']
+                    states['[[entity_2_left]]'].attributes['device_class']
                     %}
-                      mdi:{{ states['[[entity_2_top_left]]'].attributes['device_class'] }}
+                      mdi:{{ states['[[entity_2_left]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[entity_2_top_left]]', 'on') or
-                    is_state('[[entity_2_top_left]]', 'recording') %}
-                     [[entity_2_icon_color_top_left]]
+                    {% if is_state('[[entity_2_left]]', 'on') or
+                    is_state('[[entity_2_left]]', 'recording') %}
+                     [[entity_2_icon_color_left]]
                     {% endif %}
-                  content: '[[content_2_top_left]]'
+                  content: '[[content_2_left]]'
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_3_top_left]]'
+                    entity: '[[entity_3_left]]'
                     state:
                       - recording
                       - 'on'
@@ -728,23 +728,23 @@ decluttering_templates:
                     action: none
                   double_tap_action:
                     action: none
-                  entity: '[[entity_3_top_left]]'
+                  entity: '[[entity_3_left]]'
                   icon: >
-                    {% if states['[[entity_3_top_left]]'].attributes['icon'] %}
-                    {{ states['[[entity_3_top_left]]'].attributes['icon'] }} {%
+                    {% if states['[[entity_3_left]]'].attributes['icon'] %}
+                    {{ states['[[entity_3_left]]'].attributes['icon'] }} {%
                     elif
-                    states['[[entity_3_top_left]]'].attributes['device_class']
+                    states['[[entity_3_left]]'].attributes['device_class']
                     %}
-                      mdi:{{ states['[[entity_3_top_left]]'].attributes['device_class'] }}
+                      mdi:{{ states['[[entity_3_left]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[entity_3_top_left]]', 'on') or
-                    is_state('[[entity_3_top_left]]', 'recording') %}
-                     [[entity_3_icon_color_top_left]]
+                    {% if is_state('[[entity_3_left]]', 'on') or
+                    is_state('[[entity_3_left]]', 'recording') %}
+                     [[entity_3_icon_color_left]]
                     {% endif %}
-                  content: '[[content_3_top_left]]'
+                  content: '[[content_3_left]]'
         chip_card_center:
           card:
             type: conditional
@@ -818,10 +818,10 @@ decluttering_templates:
                 return "url('[[background_image]]') no-repeat center center / cover";
               ]]]         
         custom_fields:
-          chip_card_right_top:
+          chip_card_right:
             - position: absolute
             - right: 1%
-          chip_card_left_top:
+          chip_card_left:
             - position: absolute
             - left: 1%
           chip_card_center:
