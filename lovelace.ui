@@ -621,10 +621,10 @@ decluttering_templates:
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_camera]]'
+                    entity: '[[entity_alarme]'
                     state:
-                      - recording
-                      - 'on'
+                      - armed_away
+                      - armed_night
                 chip:
                   type: template
                   tap_action:
