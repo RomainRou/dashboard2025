@@ -621,10 +621,11 @@ decluttering_templates:
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_alarme]'
+                    entity: '[[entity_alarme]]'
                     state:
                       - armed_away
                       - armed_night
+                      - triggered
                 chip:
                   type: template
                   tap_action:
@@ -644,9 +645,11 @@ decluttering_templates:
                       mdi:device-unknown
                     {% endif %}
                   icon_color: >
-                    {% if is_state('[[entity_camera]]', 'on') or
-                    is_state('[[entity_camera]', 'recording') %}
-                     [[entity_color_camera]]
+                    {% if is_state('[[entity_alarme]]', 'triggered') %}
+                      #f44336
+                    {% elif is_state('[[entity_alarme]]', 'armed_away') or
+                    is_state('[[entity_alarme]]', 'armed_night') %}
+                      [[entity_color_camera]]
                     {% endif %}
                   content: '[[content_camera]]'
               - type: conditional
