@@ -53,7 +53,8 @@ Update 7 : fusion de la room card et de la weather card afin de n'avoir qu'une s
 Update 8 : suppresion des cartes mini graph en raison d'un probleme avec card mod , les infos qui se travais dans la carte se retrouve sur la carte du dashboard et dans la carte entity a renseigner avec la variable - sensor_power: si vous souhaiter avoir l'information de consommation et suppression des cartes fold entity row de la systeme<br>
 Update 9 : quelques modifications mineure optimisation et nettoyage du code<br>
 Update 10 : modification de certains nom d'entitées nettoyage du code et optimisation<br>
-Update 11 : résolution d'un bug pour le chip caméra , maintenant il s'affiche une fois l'alarme armée en mode absent et nuit<br><br>
+Update 11 : résolution d'un bug pour le chip caméra , maintenant il s'affiche une fois l'alarme armée en mode absent et nuit<br>
+Update 12 : resolution de quelques bugs sur la chip card camera s'affiche avec alarmo activé en mode nuit/absent la couleur peut etre changer dans les variables de la carte, la chip alarme reste aficher quand alarmo passe a triggered (declenchée), l'icone camera passe en rouge quand alarmo est declenchée<br><br>
 Update en cour suppression de card mod<br>
 Instalation du dashboard:<br><br>
 Dans home assistant cliquer sur le crayon pour modifier le dashboard en haut à droite<br>
