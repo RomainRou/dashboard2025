@@ -52,7 +52,39 @@ Update 6 : ajout de la temperature et du taux d'humidité de la pièce sur la ca
 Update 7 : fusion de la room card et de la weather card afin de n'avoir qu'une seul carte mais regroupant les fonctions des 2 cartes , ajustement de la tailles des backgrounds<br>
 Update 8 : suppresion des cartes mini graph en raison d'un probleme avec card mod , les infos qui se travais dans la carte se retrouve sur la carte du dashboard et dans la carte entity a renseigner avec la variable - sensor_power: si vous souhaiter avoir l'information de consommation et suppression des cartes fold entity row de la systeme<br>
 Update 9 : quelques modifications mineure optimisation et nettoyage du code<br>
-Update 10 : modification de certains nom d'entitées nettoyage du code et optimisation<br>
+Update 10 : modification de certains nom d'entitées nettoyage du code et optimisation:<br>
+pour les group prises:<br>
+  - group_prises<br><br>
+pour les group light:<br>
+  - group_light<br><br>
+pour les group volets:
+  - cover_group<br>
+  - entity_cover<br><br>
+pour les entitées sur la droite de la carte:<br>
+  - entity_1_right<br>
+  - entity_2_right<br>
+  - entity_2_right<br>
+  - entity_1_icon_color_top_right -> entity_1_icon_color_right<br>
+  - entity_2_icon_color_top_right -> entity_2_icon_color_right<br>
+  - entity_3_icon_color_top_right -> entity_3_icon_color_right<br><br>
+pour les entitées sur la gauche de la carte:<br>
+  - entity_1_left<br>
+  - entity_2_left<br>
+  - entity_2_left<br>
+  - entity_1_icon_color_top_left -> entity_1_icon_color_right<br>
+  - entity_2_icon_color_top_left -> entity_2_icon_color_right<br>
+  - entity_3_icon_color_top_left -> entity_3_icon_color_right<br><br>
+pour les lumières sur la droite de la carte:<br>
+  - light_1_icon_color_top_right -> light_1_icon_color_left<br>
+  - light_2_icon_color_top_right -> light_2_icon_color_left<br>
+  - light_3_icon_color_top_right -> light_3_icon_color_left<br><br>
+pour l'icone des volet sur la gauche:<br>
+  - entity_cover_icon_color<br><br>
+pour l'alarme:<br>
+  - entity_alarme<br>
+  - code_alarm<br><br>
+pour la boite aux lettres:<br>
+  - capteur_bal<br><br>
 Update 11 : résolution d'un bug pour le chip caméra , maintenant il s'affiche une fois l'alarme armée en mode absent et nuit<br>
 Update 12 : resolution de quelques bugs sur la chip card camera s'affiche avec alarmo activé en mode nuit/absent la couleur peut etre changer dans les variables de la carte, la chip alarme reste aficher quand alarmo passe a triggered (declenchée), l'icone camera passe en rouge quand alarmo est declenchée<br><br>
 Update en cour suppression de card mod<br>
