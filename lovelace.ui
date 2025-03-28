@@ -1,236 +1,310 @@
 decluttering_templates:
-  template_thermostat_card:
-    card:
-      type: custom:simple-thermostat
-      entity: '[[climate]]'
-      step_size: 0.5
-      header: false
-      hide:
-        state: true
-      control:
-        hvac:
-          'off':
-            name: Éteint
-          heat:
-            name: Chauffe
-        preset:
-          none:
-            name: Manuel
-            icon: mdi:hand-back-left
-          frost:
-            name: Hors-gel
-            icon: mdi:snowflake
-          eco:
-            name: Nuit
-            icon: mdi:weather-night
-          comfort:
-            name: Jour
-            icon: mdi:weather-sunny
-          boost:
-            name: boost
-            icon: mdi:rocket-launch
-      layout:
-        mode:
-          headings: false
-          icons: true
-          names: true
-  template_opening_card:
+  template_custom_button_cover_card:
     card:
       type: custom:button-card
-      entity: '[[entity]]'
-      show_state: false
-      name: '[[name]]'
-      styles:
-        card:
-          - box-shadow: none
-          - background: none
-          - display: flex
-          - flex-direction: column
-          - justify-content: flex-start
-          - align-items: center
-        icon:
-          - border-radius: 50px
-          - width: 23px
-          - height: 23px
-          - padding: 8px
-        name:
-          - font-size: 14px
-          - text-align: center
-          - font-family: Roboto
-          - font-weight: 411
-          - margin-top: 11px
-        state:
-          - font-size: 12px
-          - text-align: center
-      state:
-        - value: 'off'
-          styles:
-            icon:
-              - color: '#47a24c'
-              - background-color: '#263a27'
-        - value: 'on'
-          styles:
-            icon:
-              - color: '#f44336'
-              - background-color: '#482422'
       tap_action:
-        action: more-info
-      layout: vertical
-      extra_styles: |
-        ha-card {
-          border: none;
-          background: none;
-        }
-  template_entity_card:
-    card:
-      type: custom:button-card
-      entity: '[[entity]]'
-      show_state: false
-      name: '[[name]]'
-      styles:
-        card:
-          - box-shadow: none
-          - background: none
-          - display: flex
-          - flex-direction: column
-          - justify-content: flex-start
-          - align-items: center
-        icon:
-          - border-radius: 50px
-          - width: 23px
-          - height: 23px
-          - padding: 8px
-        name:
-          - font-size: 14px
-          - text-align: center
-          - font-family: Roboto
-          - font-weight: 411
-          - margin-top: 11px
-        state:
-          - font-size: 12px
-          - text-align: center
-        custom_fields:
-          sensor:
-            - position: absolute
-            - font-size: 12px
-            - font-family: Roboto
-            - left: 47%
-            - bottom: 0%
-      state:
-        - value: paused
-          styles:
-            icon:
-              - color: '#2196f3'
-              - background-color: '#1d3447'
-        - value: played
-          styles:
-            icon:
-              - color: '#2196f3'
-              - background-color: '#1d3447'
-        - value: 'on'
-          styles:
-            icon:
-              - color: '#2196f3'
-              - background-color: '#1d3447'
-        - value: 'off'
-          styles:
-            icon:
-              - color: '#808080'
-              - background-color: '#80808025'
-        - value: unavailable
-          styles:
-            icon:
-              - color: '#80808050'
-              - background-color: '#80808025'
-      tap_action:
-        action: toggle
-      hold_action:
-        action: more-info
-      layout: vertical
+        action: none
+      show_icon: false
+      show_name: false
+      aspect_ratio: 7/1
+      entity: '[[cover]]'
+      variables:
+        current_position: '[[[ return entity.attributes.current_position || 0; ]]]'
       custom_fields:
-        sensor: |
-          [[[
-            if ('[[sensor_power]]' && states['[[sensor_power]]']) {
-              return states['[[sensor_power]]'].state + (states['[[sensor_power]]'].attributes.unit_of_measurement ? ' ' + states['[[sensor_power]]'].attributes.unit_of_measurement : '');
-            } else {
-              return '';
-            }
-          ]]]
-      extra_styles: |
-        ha-card {
-          border: none;
-          background: none;
-        }
-  template_alarm_card:
-    card:
-      type: custom:button-card
-      entity: '[[entity]]'
-      show_state: true
-      name: '[[name]]'
+        chip_card_up:
+          card:
+            type: custom:button-card
+            variables:
+              current_position: '[[[ return entity.attributes.current_position || 0; ]]]'
+            entity: '[[cover]]'
+            icon: >
+              [[[ return variables.current_position == 100 ?
+              "mdi:arrow-up-bold-outline" : "mdi:arrow-up-bold"; ]]]
+            show_state: false
+            show_name: false
+            styles:
+              card:
+                - box-shadow: none
+                - background: none
+                - display: flex
+                - flex-direction: column
+                - justify-content: flex-start
+                - align-items: center
+              icon:
+                - border-radius: 13px
+                - width: 23px
+                - height: 23px
+                - padding: 8px
+                - color: >
+                    [[[ return variables.current_position == 100 ? "#808080" :
+                    "#2196f3"; ]]]
+                - background-color: >
+                    [[[ return variables.current_position == 100 ? "#80808025" :
+                    "#1d3447"; ]]]
+            tap_action:
+              action: perform-action
+              perform_action: cover.open_cover
+              target:
+                entity_id: '[[cover]]'
+              haptic: success
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            extra_styles: |
+              ha-card {
+                border: none;
+                background: none;
+              }
+        chip_card_stop:
+          card:
+            type: custom:button-card
+            entity: '[[cover]]'
+            icon: |
+              [[[ 
+                const position = entity.attributes.current_position || 0;
+                return position > 0 && position < 100 ? "mdi:checkbox-blank" : "mdi:checkbox-blank-outline"; 
+              ]]]
+            show_state: false
+            show_name: false
+            styles:
+              card:
+                - box-shadow: none
+                - background: none
+                - display: flex
+                - flex-direction: column
+                - justify-content: flex-start
+                - align-items: center
+              icon:
+                - border-radius: 13px
+                - width: 23px
+                - height: 23px
+                - padding: 8px
+                - color: |
+                    [[[ 
+                      const position = entity.attributes.current_position || 0;
+                      return position > 0 && position < 100 ? "#2196f3" : "#808080"; 
+                    ]]]
+                - background-color: |
+                    [[[ 
+                      const position = entity.attributes.current_position || 0;
+                      return position > 0 && position < 100 ? "#1d3447" : "#80808025"; 
+                    ]]]
+            tap_action:
+              action: perform-action
+              perform_action: cover.stop_cover
+              target:
+                entity_id: '[[cover]]'
+              haptic: success
+            extra_styles: |
+              ha-card {
+                border: none;
+                background: none;
+              }
+        chip_card_down:
+          card:
+            type: custom:button-card
+            variables:
+              current_position: '[[[ return entity.attributes.current_position || 0; ]]]'
+            entity: '[[cover]]'
+            icon: >
+              [[[ return variables.current_position == 0 ?
+              "mdi:arrow-down-bold-outline" : "mdi:arrow-down-bold"; ]]]
+            show_state: false
+            show_name: false
+            styles:
+              card:
+                - box-shadow: none
+                - background: none
+                - display: flex
+                - flex-direction: column
+                - justify-content: flex-start
+                - align-items: center
+              icon:
+                - border-radius: 13px
+                - width: 23px
+                - height: 23px
+                - padding: 8px
+                - color: >
+                    [[[ return variables.current_position == 0 ? "#808080" :
+                    "#2196f3"; ]]]
+                - background-color: >
+                    [[[ return variables.current_position == 0 ? "#80808025" :
+                    "#1d3447"; ]]]
+            tap_action:
+              action: perform-action
+              perform_action: cover.close_cover
+              target:
+                entity_id: '[[cover]]'
+              haptic: success
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            extra_styles: |
+              ha-card {
+                border: none;
+                background: none;
+              }
+        chip_card_status:
+          card:
+            type: custom:button-card
+            entity: '[[cover]]'
+            show_state: true
+            show_name: false
+            show_icon: false
+            styles:
+              card:
+                - box-shadow: none
+                - background: none
+                - display: flex
+                - flex-direction: column
+                - justify-content: flex-start
+                - align-items: center
+              state:
+                - margin-top: 12px
+                - font-size: 12px
+                - text-align: center
+                - font-family: Roboto
+                - font-weight: 411
+                - margin-top: 0px
+              icon:
+                - border-radius: 50px
+                - width: 23px
+                - height: 23px
+                - padding: 8px
+            state_display: |
+              [[[ 
+                if (entity.attributes.entity_id && entity.attributes.entity_id.length > 0) {
+                  // Récupère les états des entités membres
+                  const toutesCouvres = entity.attributes.entity_id.map(id => {
+                    const etat = states[id];
+                    if (etat && etat.attributes && typeof etat.attributes.current_position === "number") {
+                      return etat.attributes.current_position;
+                    }
+                    return null; // Valeur par défaut si aucune position valide
+                  }).filter(pos => pos !== null); 
+                  const fermes = toutesCouvres.filter(pos => pos === 0).length;
+                  const ouverts = toutesCouvres.filter(pos => pos === 100).length;
+                  const partiels = toutesCouvres.length - fermes - ouverts;          
+                  let resultat = [];
+                  if (fermes > 0) resultat.push(`F:${fermes}`);
+                  if (partiels > 0) resultat.push(`P:${partiels}`);
+                  if (ouverts > 0) resultat.push(`O:${ouverts}`);
+                  return resultat.join(" ");
+                } else {                
+                  const position = entity.attributes.current_position || 0;
+                  if (position === 100) return "Ouvert";
+                  if (position === 0) return "Fermé";
+                  return `${position}%`;
+                }
+              ]]]
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            extra_styles: |
+              ha-card {
+                border: none;
+                background: none;
+              }
+        chip_card_cover:
+          card:
+            type: custom:button-card
+            entity: '[[cover]]'
+            show_state: false
+            show_name: false
+            styles:
+              card:
+                - box-shadow: none
+                - background: none
+                - display: flex
+                - flex-direction: column
+                - justify-content: flex-start
+                - align-items: center
+              icon:
+                - border-radius: 50px
+                - width: 23px
+                - height: 23px
+                - padding: 8px
+            state:
+              - operator: template
+                value: |
+                  [[[ return entity.attributes.current_position === 100; ]]]
+                icon: cil:shutter-0
+                styles:
+                  icon:
+                    - color: '#2196f3'
+                    - background-color: '#1d3447'
+              - operator: template
+                value: >
+                  [[[ return entity.attributes.current_position >= 75 &&
+                  entity.attributes.current_position < 100; ]]]
+                icon: cil:shutter-1
+                styles:
+                  icon:
+                    - color: '#2196f3'
+                    - background-color: '#1d3447'
+              - operator: template
+                value: >
+                  [[[ return entity.attributes.current_position >= 50 &&
+                  entity.attributes.current_position < 75; ]]]
+                icon: cil:shutter-2
+                styles:
+                  icon:
+                    - color: '#2196f3'
+                    - background-color: '#1d3447'
+              - operator: template
+                value: >
+                  [[[ return entity.attributes.current_position >= 25 &&
+                  entity.attributes.current_position < 50; ]]]
+                icon: cil:shutter-3
+                styles:
+                  icon:
+                    - color: '#2196f3'
+                    - background-color: '#1d3447'
+              - operator: template
+                value: |
+                  [[[ return entity.attributes.current_position >= 0 &&
+                  entity.attributes.current_position < 25; ]]]
+                icon: cil:shutter-4
+                styles:
+                  icon:
+                    - color: '#2196f3'
+                    - background-color: '#1d3447'
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            extra_styles: |
+              ha-card{
+                border: none;
+                background: none;
+                }
       styles:
-        card:
-          - box-shadow: none
-          - background: none
-          - display: flex
-          - flex-direction: column
-          - justify-content: flex-start
-          - align-items: center
-        icon:
-          - border-radius: 50px
-          - width: 23px
-          - height: 23px
-          - padding: 8px
         name:
-          - font-size: 14px
-          - text-align: center
-          - font-family: Roboto
-          - font-weight: 411
-          - margin-top: 11px
-        state:
-          - font-size: 12px
-          - text-align: center
-      state:
-        - value: disarmed
-          styles:
-            icon:
-              - color: '#2196f3'
-              - background-color: '#1d3447'
-        - value: armed_away
-          styles:
-            icon:
-              - color: '#47a24c'
-              - background-color: '#263a27'
-        - value: armed_night
-          styles:
-            icon:
-              - color: '#47a24c'
-              - background-color: '#263a27'
-        - value: triggered
-          styles:
-            icon:
-              - color: '#f44336'
-              - background-color: '#482422'
-              - animation: blinking 0.5s infinite
-      extra_styles: |
-        ha-card {
-          border: none;
-          background: none;
-        }
-        @keyframes blinking {
-          0% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.5;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-      tap_action:
-        action: more-info
-      layout: vertical
-#template de la room card
+          - color: white
+          - font-weight: bold
+          - text-shadow: >-
+              1px 1px 3px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000, 1px
+              1px 2px
+        card: null
+        custom_fields:
+          chip_card_up:
+            - position: absolute
+            - right: 5%
+          chip_card_stop:
+            - position: absolute
+            - right: 25%
+          chip_card_down:
+            - position: absolute
+            - right: 45%
+          chip_card_cover:
+            - position: absolute
+            - left: 5%
+          chip_card_status:
+            - position: absolute
+            - left: 25%
   template_custom_button_room_card:
     card:
       type: custom:button-card
@@ -276,7 +350,8 @@ decluttering_templates:
                   double_tap_action:
                     action: none
                   tap_action:
-                    action: none
+                    action: navigate
+                    navigation_path: '[[light_list]]'
                   content: >-
                     {{ expand('[[group_light]]') | selectattr('state', 'eq',
                     'on') | list | length }}
@@ -308,7 +383,8 @@ decluttering_templates:
                   double_tap_action:
                     action: none
                   tap_action:
-                    action: none
+                    action: navigate
+                    navigation_path: '[[socket_list]]'
                   content: >-
                     {{ expand('[[group_prises]]') | selectattr('state', 'eq',
                     'on') | list | length }}
@@ -419,11 +495,9 @@ decluttering_templates:
                     action: none
                   entity: '[[light_1_right]]'
                   icon: >
-                    {% if states['[[light_1_right]]'].attributes['icon'] %}
-                    {{ states['[[light_1_right]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[light_1_right]]'].attributes['device_class']
-                    %}
+                    {% if states['[[light_1_right]]'].attributes['icon'] %} {{
+                    states['[[light_1_right]]'].attributes['icon'] }} {% elif
+                    states['[[light_1_right]]'].attributes['device_class'] %}
                       mdi:{{ states['[[light_1_right]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
@@ -451,11 +525,9 @@ decluttering_templates:
                     action: none
                   entity: '[[light_2_right]]'
                   icon: >
-                    {% if states['[[light_2_right]]'].attributes['icon'] %}
-                    {{ states['[[light_2_right]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[light_2_right]]'].attributes['device_class']
-                    %}
+                    {% if states['[[light_2_right]]'].attributes['icon'] %} {{
+                    states['[[light_2_right]]'].attributes['icon'] }} {% elif
+                    states['[[light_2_right]]'].attributes['device_class'] %}
                       mdi:{{ states['[[light_2_right]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
@@ -483,11 +555,9 @@ decluttering_templates:
                     action: none
                   entity: '[[light_3_right]]'
                   icon: >
-                    {% if states['[[light_3_right]]'].attributes['icon'] %}
-                    {{ states['[[light_3_right]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[light_3_right]]'].attributes['device_class']
-                    %}
+                    {% if states['[[light_3_right]]'].attributes['icon'] %} {{
+                    states['[[light_3_right]]'].attributes['icon'] }} {% elif
+                    states['[[light_3_right]]'].attributes['device_class'] %}
                       mdi:{{ states['[[light_3_right]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
@@ -498,6 +568,62 @@ decluttering_templates:
                      #03a9f4
                     {% endif %}
                   content: '[[content_light_3_right]]'
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: '[[switch_camera_ext_3]]'
+                    state:
+                      - 'on'
+                chip:
+                  type: template
+                  tap_action:
+                    action: navigate
+                    navigation_path: '[[navigation_cam_3]]'
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  entity: '[[entity_camera_ext_3]]'
+                  icon: >
+                    {% if states['[[entity_camera_ext_3]]'].attributes['icon']
+                    %} {{ states['[[entity_camera_ext_3]]'].attributes['icon']
+                    }} {% elif
+                    states['[[entity_camera_ext_3]]'].attributes['device_class']
+                    %}
+                      mdi:{{ states['[[entity_camera_ext_3]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: '[[entity_color_camera]]'
+                  content: '[[content_camera_ext_3]]'
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: '[[switch_camera_ext_4]]'
+                    state:
+                      - 'on'
+                chip:
+                  type: template
+                  tap_action:
+                    action: navigate
+                    navigation_path: '[[navigation_cam_4]]'
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  entity: '[[entity_camera_ext_4]]'
+                  icon: >
+                    {% if states['[[entity_camera_ext_4]]'].attributes['icon']
+                    %} {{ states['[[entity_camera_ext_4]]'].attributes['icon']
+                    }} {% elif
+                    states['[[entity_camera_ext_4]]'].attributes['device_class']
+                    %}
+                      mdi:{{ states['[[entity_camera_ext_4]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: '[[entity_color_camera]]'
+                  content: '[[content_camera_ext_4]]'
         chip_card_left:
           card:
             type: custom:mushroom-chips-card
@@ -518,8 +644,8 @@ decluttering_templates:
                     action: none
                   icon: >-
                     {% set position =
-                    states['[[cover_group]]'].attributes.current_position | int
-                    %} {% if position == 100 %}
+                    states['[[cover_group]]'].attributes.current_position |
+                    float(default=0) | int %} {% if position == 100 %}
                       cil:shutter-0
                     {% elif position >= 75 %}
                       cil:shutter-1
@@ -563,8 +689,8 @@ decluttering_templates:
                     action: none
                   icon: >-
                     {% set position =
-                    states['[[entity_cover]]'].attributes.current_position | int
-                    %} {% if position == 100 %}
+                    states['[[entity_cover]]'].attributes.current_position |
+                    float(default=0) | int %} {% if position == 100 %}
                       cil:shutter-0
                     {% elif position >= 75 %}
                       cil:shutter-1
@@ -586,6 +712,7 @@ decluttering_templates:
                     state:
                       - armed_away
                       - armed_night
+                      - triggered
                 chip:
                   type: alarm-control-panel
                   entity: '[[entity_alarme]]'
@@ -621,11 +748,9 @@ decluttering_templates:
               - type: conditional
                 conditions:
                   - condition: state
-                    entity: '[[entity_alarme]]'
+                    entity: '[[switch_camera]]'
                     state:
-                      - armed_away
-                      - armed_night
-                      - triggered
+                      - 'on'
                 chip:
                   type: template
                   tap_action:
@@ -655,6 +780,62 @@ decluttering_templates:
               - type: conditional
                 conditions:
                   - condition: state
+                    entity: '[[switch_camera_ext]]'
+                    state:
+                      - 'on'
+                chip:
+                  type: template
+                  tap_action:
+                    action: navigate
+                    navigation_path: '[[navigation_cam]]'
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  entity: '[[entity_camera_ext]]'
+                  icon: >
+                    {% if states['[[entity_camera_ext]]'].attributes['icon'] %}
+                    {{ states['[[entity_camera_ext]]'].attributes['icon'] }} {%
+                    elif
+                    states['[[entity_camera_ext]]'].attributes['device_class']
+                    %}
+                      mdi:{{ states['[[entity_camera_ext]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: '[[entity_color_camera]]'
+                  content: '[[content_camera_ext]]'
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: '[[switch_camera_ext_2]]'
+                    state:
+                      - 'on'
+                chip:
+                  type: template
+                  tap_action:
+                    action: navigate
+                    navigation_path: '[[navigation_cam_2]]'
+                  hold_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  entity: '[[entity_camera_ext_2]]'
+                  icon: >
+                    {% if states['[[entity_camera_ext_2]]'].attributes['icon']
+                    %} {{ states['[[entity_camera_ext_2]]'].attributes['icon']
+                    }} {% elif
+                    states['[[entity_camera_ext_2]]'].attributes['device_class']
+                    %}
+                      mdi:{{ states['[[entity_camera_ext_2]]'].attributes['device_class'] }}
+                    {% else %}
+                      mdi:device-unknown
+                    {% endif %}
+                  icon_color: '[[entity_color_camera]]'
+                  content: '[[content_camera_ext_2]]'
+              - type: conditional
+                conditions:
+                  - condition: state
                     entity: '[[entity_1_left]]'
                     state:
                       - recording
@@ -669,11 +850,9 @@ decluttering_templates:
                     action: none
                   entity: '[[entity_1_left]]'
                   icon: >
-                    {% if states['[[entity_1_left]]'].attributes['icon'] %}
-                    {{ states['[[entity_1_left]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[entity_1_left]]'].attributes['device_class']
-                    %}
+                    {% if states['[[entity_1_left]]'].attributes['icon'] %} {{
+                    states['[[entity_1_left]]'].attributes['icon'] }} {% elif
+                    states['[[entity_1_left]]'].attributes['device_class'] %}
                       mdi:{{ states['[[entity_1_left]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
@@ -701,11 +880,9 @@ decluttering_templates:
                     action: none
                   entity: '[[entity_2_left]]'
                   icon: >
-                    {% if states['[[entity_2_left]]'].attributes['icon'] %}
-                    {{ states['[[entity_2_left]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[entity_2_left]]'].attributes['device_class']
-                    %}
+                    {% if states['[[entity_2_left]]'].attributes['icon'] %} {{
+                    states['[[entity_2_left]]'].attributes['icon'] }} {% elif
+                    states['[[entity_2_left]]'].attributes['device_class'] %}
                       mdi:{{ states['[[entity_2_left]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
@@ -733,11 +910,9 @@ decluttering_templates:
                     action: none
                   entity: '[[entity_3_left]]'
                   icon: >
-                    {% if states['[[entity_3_left]]'].attributes['icon'] %}
-                    {{ states['[[entity_3_left]]'].attributes['icon'] }} {%
-                    elif
-                    states['[[entity_3_left]]'].attributes['device_class']
-                    %}
+                    {% if states['[[entity_3_left]]'].attributes['icon'] %} {{
+                    states['[[entity_3_left]]'].attributes['icon'] }} {% elif
+                    states['[[entity_3_left]]'].attributes['device_class'] %}
                       mdi:{{ states['[[entity_3_left]]'].attributes['device_class'] }}
                     {% else %}
                       mdi:device-unknown
@@ -829,22 +1004,325 @@ decluttering_templates:
             - left: 1%
           chip_card_center:
             - position: absolute
-            - left: 42%
+            - left: 43%
             - transform: scale(0.7)
             - top: 0%
           chip_card_center_2:
             - position: absolute
-            - left: 42%
+            - left: 43%
             - transform: scale(0.7)
             - bottom: 0%
+  template_thermostat_card:
+    card:
+      type: vertical-stack
+      cards:
+        - type: entity
+          entity: '[[sensor_temp]]'
+          name: 🌡 Température Actuelle
+          icon: []
+        - type: horizontal-stack
+          cards:
+            - type: entity
+              name: 🎛 Mode Actuel
+              icon: []
+              entity: '[[input_select]]'
+            - type: entity
+              icon: []
+              entity: '[[binary_sensor]]'
+              name: 🪟 Fenêtre
+        - square: false
+          type: grid
+          columns: 4
+          cards:
+            - type: custom:button-card
+              entity: '[[input_select]]'
+              show_name: true
+              show_icon: true
+              name: Confort
+              icon: mdi:fire
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        return entity.state === "Confort" ? "rgba(255, 87, 67, 0.4)" : "rgba(128, 128, 128, 0.15)";
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        return entity.state === "Confort" ? "rgb(255, 87, 67)" : "#808080";
+                      ]]]
+                  - opacity: |
+                      [[[
+                        return entity.state === "Confort" ? "0.9" : "0.3";
+                      ]]]
+              tap_action:
+                action: call-service
+                service: input_select.select_option
+                service_data:
+                  entity_id: '[[input_select]]'
+                  option: Confort
+            - type: custom:button-card
+              entity: '[[input_select]]'
+              show_name: true
+              show_icon: true
+              name: Eco
+              icon: mdi:leaf
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        return entity.state === "Eco" ? "rgba(0, 128, 0, 0.4)" : "rgba(128, 128, 128, 0.15)";
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        return entity.state === "Eco" ? "#008000" : "#808080";
+                      ]]]
+                  - opacity: |
+                      [[[
+                        return entity.state === "Eco" ? "0.9" : "0.3";
+                      ]]]
+              tap_action:
+                action: call-service
+                service: input_select.select_option
+                service_data:
+                  entity_id: '[[input_select]]'
+                  option: Eco
+            - type: custom:button-card
+              entity: '[[input_select]]'
+              show_name: true
+              show_icon: true
+              name: Hors-gel
+              icon: mdi:snowflake
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        return entity.state === "Hors-gel" ? "rgba(33, 150, 243, 0.4)" : "rgba(128, 128, 128, 0.15)";
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        return entity.state === "Hors-gel" ? "#2196f3" : "#808080";
+                      ]]]
+                  - opacity: |
+                      [[[
+                        return entity.state === "Hors-gel" ? "0.9" : "0.3";
+                      ]]]
+              tap_action:
+                action: call-service
+                service: input_select.select_option
+                service_data:
+                  entity_id: '[[input_select]]'
+                  option: Hors-gel
+            - type: custom:button-card
+              entity: '[[input_select]]'
+              show_name: true
+              show_icon: true
+              name: Arrêt
+              icon: mdi:power
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        return entity.state === "Arret" ? "rgba(255, 255, 255, 0.4)" : "rgba(128, 128, 128, 0.15)";
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        return entity.state === "Arret" ? "#ffffff" : "#808080";
+                      ]]]
+                  - opacity: |
+                      [[[
+                        return entity.state === "Arret" ? "0.9" : "0.3";
+                      ]]]
+              tap_action:
+                action: call-service
+                service: input_select.select_option
+                service_data:
+                  entity_id: '[[input_select]]'
+                  option: Arret
+  template_opening_card:
+    card:
+      type: custom:button-card
+      entity: '[[entity]]'
+      show_state: false
+      name: '[[name]]'
+      styles:
+        card:
+          - box-shadow: none
+          - background: none
+          - display: flex
+          - flex-direction: column
+          - justify-content: flex-start
+          - align-items: center
+        icon:
+          - border-radius: 50px
+          - width: 23px
+          - height: 23px
+          - padding: 8px
+        name:
+          - font-size: 14px
+          - text-align: center
+          - font-family: Roboto
+          - font-weight: 411
+          - margin-top: 11px
+        state:
+          - font-size: 12px
+          - text-align: center
+      state:
+        - value: 'off'
+          styles:
+            icon:
+              - color: '#47a24c'
+              - background-color: '#263a27'
+        - value: 'on'
+          styles:
+            icon:
+              - color: '#f44336'
+              - background-color: '#482422'
+      tap_action:
+        action: more-info
+      layout: vertical
+  template_entity_card:
+    card:
+      type: custom:button-card
+      entity: '[[entity]]'
+      show_state: false
+      name: '[[name]]'
+      styles:
+        card:
+          - box-shadow: none
+          - background: none
+          - display: flex
+          - flex-direction: column
+          - justify-content: flex-start
+          - align-items: center
+        icon:
+          - border-radius: 50px
+          - width: 23px
+          - height: 23px
+          - padding: 8px
+        name:
+          - font-size: 14px
+          - text-align: center
+          - font-family: Roboto
+          - font-weight: 411
+          - margin-top: 11px
+        state:
+          - font-size: 12px
+          - text-align: center
+        custom_fields:
+          sensor:
+            - position: absolute
+            - font-size: 10px
+            - font-family: Roboto
+            - left: 47%
+            - bottom: 0%
+      state:
+        - value: paused
+          styles:
+            icon:
+              - color: '#2196f3'
+              - background-color: '#1d3447'
+        - value: played
+          styles:
+            icon:
+              - color: '#2196f3'
+              - background-color: '#1d3447'
+        - value: 'on'
+          styles:
+            icon:
+              - color: '#2196f3'
+              - background-color: '#1d3447'
+        - value: 'off'
+          styles:
+            icon:
+              - color: '#808080'
+              - background-color: '#80808025'
+        - value: unavailable
+          styles:
+            icon:
+              - color: '#80808050'
+              - background-color: '#80808025'
+      tap_action:
+        action: toggle
+      hold_action:
+        action: more-info
+      layout: vertical
+      custom_fields: null
+  template_alarm_card:
+    card:
+      type: custom:button-card
+      entity: '[[entity]]'
+      show_state: true
+      name: '[[name]]'
+      styles:
+        card:
+          - box-shadow: none
+          - background: none
+          - display: flex
+          - flex-direction: column
+          - justify-content: flex-start
+          - align-items: center
+        icon:
+          - border-radius: 50px
+          - width: 23px
+          - height: 23px
+          - padding: 8px
+        name:
+          - font-size: 14px
+          - text-align: center
+          - font-family: Roboto
+          - font-weight: 411
+          - margin-top: 11px
+        state:
+          - font-size: 12px
+          - text-align: center
+      state:
+        - value: disarmed
+          styles:
+            icon:
+              - color: '#2196f3'
+              - background-color: '#1d3447'
+        - value: armed_away
+          styles:
+            icon:
+              - color: '#47a24c'
+              - background-color: '#263a27'
+        - value: armed_night
+          styles:
+            icon:
+              - color: '#47a24c'
+              - background-color: '#263a27'
+        - value: triggered
+          styles:
+            icon:
+              - color: '#f44336'
+              - background-color: '#482422'
+              - animation: blinking 0.5s infinite
+      extra_styles: |
+        @keyframes blinking {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      tap_action:
+        action: more-info
+      layout: vertical
   template_custom_badges:
     card:
       type: custom:mushroom-template-badge
-      content: '{{ states(''[[sensor_temp]]'') | float | round(1) }}°' #sensor temp pour les badges 
+      content: '{{ states(''[[sensor_temp]]'') | float(default=0) | round(1) }}°'
       icon: mdi:thermometer
-      #couleur de l'icone dynamique s'adapte a la temperature 
       color: |-
-        {% set temp = states('[[sensor_temp]]') | float %} 
+        {% set temp = states('[[sensor_temp]]') | float(default=0) %}
         {% if temp >= 32 %}
           rgb(199, 199, 199)
         {% elif 31.62 <= temp < 32 %}
@@ -941,8 +1419,7 @@ decluttering_templates:
         action: none
       double_tap_action:
         action: none
-      label: '[[label]]' #titre du badge
-#template de la carte du tableu pronote integrable dans les popups
+      label: '[[label]]'
   template_pronote_card:
     card:
       type: custom:tabbed-card
@@ -971,7 +1448,7 @@ decluttering_templates:
             current_week_only: false
             enable_slider: true
             display_free_time_slots: true
-            entity: sensor.pronote_[[nom_prenom]]_timetable_period
+            entity: sensor.pronote_[[nom_prenom]]_period_s_timetable
         - attributes:
             isMinWidthIndicator: true
             label: 📗Devoirs
@@ -1285,6 +1762,13 @@ decluttering_templates:
                   span {
                       padding: 5px;
                   }
+        - attributes:
+            isMinWidthIndicator: true
+            label: 🍖Menu cantine
+          card:
+            type: custom:pronote-menu-card
+            entity: sensor.pronote_[[nom_prenom]]_menus
+            display_header: false
         - attributes:
             isMinWidthIndicator: true
             label: 🍖Menu cantine
@@ -1778,262 +2262,3 @@ decluttering_templates:
                         tr:nth-child(n+2) > td:nth-child(2) {
                           text-align: center;
                         }
-#template de la carte de controle de volet avec affichage d'etat dans les popups
-  template_cover_chip_card:
-    card:
-      type: horizontal-stack
-      cards:
-        - type: custom:button-card
-          entity: '[[cover]]'
-          show_state: false
-          show_name: false
-          styles:
-            card:
-              - box-shadow: none
-              - background: none
-              - display: flex
-              - flex-direction: column
-              - justify-content: flex-start
-              - align-items: center
-            icon:
-              - border-radius: 50px
-              - width: 23px
-              - height: 23px
-              - padding: 8px
-          state:
-            - operator: template
-              value: |
-                [[[ return entity.attributes.current_position === 100; ]]]
-              icon: cil:shutter-0
-              styles:
-                icon:
-                  - color: '#2196f3'
-                  - background-color: '#1d3447'
-            - operator: template
-              value: >
-                [[[ return entity.attributes.current_position >= 75 &&
-                entity.attributes.current_position < 100; ]]]
-              icon: cil:shutter-1
-              styles:
-                icon:
-                  - color: '#2196f3'
-                  - background-color: '#1d3447'
-            - operator: template
-              value: >
-                [[[ return entity.attributes.current_position >= 50 &&
-                entity.attributes.current_position < 75; ]]]
-              icon: cil:shutter-2
-              styles:
-                icon:
-                  - color: '#2196f3'
-                  - background-color: '#1d3447'
-            - operator: template
-              value: >
-                [[[ return entity.attributes.current_position >= 25 &&
-                entity.attributes.current_position < 50; ]]]
-              icon: cil:shutter-3
-              styles:
-                icon:
-                  - color: '#2196f3'
-                  - background-color: '#1d3447'
-            - operator: template
-              value: |
-                [[[ return entity.attributes.current_position >= 0 &&
-                entity.attributes.current_position < 25; ]]]
-              icon: cil:shutter-4
-              styles:
-                icon:
-                  - color: '#2196f3'
-                  - background-color: '#1d3447'
-          tap_action:
-            action: none
-          hold_action:
-            action: none
-          extra_styles: |
-            ha-card {
-              border: none;
-              background: none;
-            }
-        - type: custom:button-card
-          entity: '[[cover]]'
-          show_state: true
-          show_name: false
-          show_icon: false
-          styles:
-            card:
-              - box-shadow: none
-              - background: none
-              - display: flex
-              - flex-direction: column
-              - justify-content: flex-start
-              - align-items: center
-            state:
-              - margin-top: 12px
-              - font-size: 12px
-              - text-align: center
-              - font-family: Roboto
-              - font-weight: 411
-              - margin-top: 11px
-            icon:
-              - border-radius: 50px
-              - width: 23px
-              - height: 23px
-              - padding: 8px
-          state_display: |
-            [[[ 
-              if (entity.attributes.entity_id && entity.attributes.entity_id.length > 0) {
-                // Récupère les états des entités membres
-                const toutesCouvres = entity.attributes.entity_id.map(id => {
-                  const etat = states[id];
-                  if (etat && etat.attributes && typeof etat.attributes.current_position === "number") {
-                    return etat.attributes.current_position;
-                  }
-                  return null; // Valeur par défaut si aucune position valide
-                }).filter(pos => pos !== null); 
-                const fermes = toutesCouvres.filter(pos => pos === 0).length;
-                const ouverts = toutesCouvres.filter(pos => pos === 100).length;
-                const partiels = toutesCouvres.length - fermes - ouverts;          
-                let resultat = [];
-                if (fermes > 0) resultat.push(`F: ${fermes}`);
-                if (partiels > 0) resultat.push(`P: ${partiels}`);
-                if (ouverts > 0) resultat.push(`O: ${ouverts}`);
-                return resultat.join(" ");
-              } else {                
-                const position = entity.attributes.current_position || 0;
-                if (position === 100) return "Ouvert";
-                if (position === 0) return "Fermé";
-                return `${position}%`;
-              }
-            ]]]
-          tap_action:
-            action: none
-          hold_action:
-            action: none
-          extra_styles: |
-            ha-card {
-              border: none;
-              background: none;
-            }
-        - type: custom:button-card
-          variables:
-            current_position: '[[[ return entity.attributes.current_position || 0; ]]]'
-          entity: '[[cover]]'
-          icon: mdi:arrow-down
-          show_state: false
-          show_name: false
-          styles:
-            card:
-              - box-shadow: none
-              - background: none
-              - display: flex
-              - flex-direction: column
-              - justify-content: flex-start
-              - align-items: center
-            icon:
-              - border-radius: 13px
-              - width: 23px
-              - height: 23px
-              - padding: 8px
-              - color: >
-                  [[[ return variables.current_position == 0 ? "#808080" :
-                  "#2196f3"; ]]]
-              - background-color: >
-                  [[[ return variables.current_position == 0 ? "#80808025" :
-                  "#1d3447"; ]]]
-          tap_action:
-            action: perform-action
-            perform_action: cover.close_cover
-            target:
-              entity_id: '[[cover]]'
-            haptic: success
-          hold_action:
-            action: none
-          double_tap_action:
-            action: none
-          extra_styles: |
-            ha-card {
-              border: none;
-              background: none;
-            }
-        - type: custom:button-card
-          entity: '[[cover]]'
-          icon: mdi:stop
-          show_state: false
-          show_name: false
-          styles:
-            card:
-              - box-shadow: none
-              - background: none
-              - display: flex
-              - flex-direction: column
-              - justify-content: flex-start
-              - align-items: center
-            icon:
-              - border-radius: 13px
-              - width: 23px
-              - height: 23px
-              - padding: 8px
-              - color: |
-                  [[[ 
-                    const position = entity.attributes.current_position || 0;
-                    return position > 0 && position < 100 ? "#2196f3" : "#808080"; 
-                  ]]]
-              - background-color: |
-                  [[[ 
-                    const position = entity.attributes.current_position || 0;
-                    return position > 0 && position < 100 ? "#1d3447" : "#80808025"; 
-                  ]]]
-          tap_action:
-            action: perform-action
-            perform_action: cover.stop_cover
-            target:
-              entity_id: '[[cover]]'
-            haptic: success
-          extra_styles: |
-            ha-card {
-              border: none;
-              background: none;
-            }
-        - type: custom:button-card
-          variables:
-            current_position: '[[[ return entity.attributes.current_position || 0; ]]]'
-          entity: '[[cover]]'
-          icon: mdi:arrow-up
-          show_state: false
-          show_name: false
-          styles:
-            card:
-              - box-shadow: none
-              - background: none
-              - display: flex
-              - flex-direction: column
-              - justify-content: flex-start
-              - align-items: center
-            icon:
-              - border-radius: 13px
-              - width: 23px
-              - height: 23px
-              - padding: 8px
-              - color: >
-                  [[[ return variables.current_position == 100 ? "#808080" :
-                  "#2196f3";
-
-                  ]]]
-              - background-color: >
-                  [[[ return variables.current_position == 100 ? "#80808025" :
-                  "#1d3447"; ]]]
-          tap_action:
-            action: perform-action
-            perform_action: cover.open_cover
-            target:
-              entity_id: '[[cover]]'
-            haptic: success
-          hold_action:
-            action: none
-          double_tap_action:
-            action: none
-          extra_styles: |
-            ha-card {
-              border: none;
-              background: none;
-            }
