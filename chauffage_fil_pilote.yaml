@@ -1,0 +1,158 @@
+blueprint:
+  name: Chauffage avec fil pilote chauffage avec gestion des fenêtres
+  description: >
+    ⚠️ **IMPORTANT** : Avant d'utiliser ce Blueprint, créez un `input_select` et un `input_text` pour chaque chauffage.<br>
+    1. Allez dans `Paramètres` → `Appareils & Services` → `Entrées`<br>
+    2. Cliquez sur `Créer une Entrée`<br>
+    3. Créez un `input_text`** pour chaque chauffage (ex: `mode_precedent_salon`, `mode_precedent_chambre`, etc.)<br>
+    4. Créez un `input_select`** pour chaque chauffage (ex: `chauffage_salon`, `chauffage_chambre`, etc.) avec ces options :
+       - Arret
+       - Confort
+       - Eco
+       - Hors-gel
+  domain: automation
+
+  input:
+    chauffage:
+      name: Sélecteur de chauffage
+      description: input_select du chauffage
+      selector:
+        entity:
+          domain: input_select
+
+    save_mode:
+      name: Mode sauvegardé du chauffage
+      description: input_text pour le chauffage
+      selector:
+        entity:
+          domain: input_text
+
+    switch1:
+      name: Relais chauffage 1
+      selector:
+        entity:
+          domain: switch
+
+    switch2:
+      name: Relais chauffage 2
+      selector:
+        entity:
+          domain: switch
+
+    window_sensor:
+      name: Capteur d'ouverture
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: 
+            - door
+            - window
+
+mode: restart  
+trigger:
+  - platform: state
+    id: "fenetre_ouverte"
+    entity_id: !input window_sensor
+    to: "on"
+
+  - platform: state
+    id: "fenetre_fermee"
+    entity_id: !input window_sensor
+    to: "off"
+
+  - platform: state
+    id: "mode_eco"
+    entity_id: !input chauffage
+    to: "Eco"
+
+  - platform: state
+    id: "mode_confort"
+    entity_id: !input chauffage
+    to: "Confort"
+
+  - platform: state
+    id: "mode_arret"
+    entity_id: !input chauffage
+    to: "Arret"
+
+  - platform: state
+    id: "mode_hors_gel"
+    entity_id: !input chauffage
+    to: "Hors-gel"
+
+action:
+  - variables:
+      chauffage_entity: !input chauffage
+      save_mode_entity: !input save_mode
+
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: "fenetre_ouverte"
+        sequence:
+          - delay: "00:00:03"
+          - service: input_text.set_value
+            target:
+              entity_id: "{{ save_mode_entity }}"
+            data:
+              value: "{{ states(chauffage_entity) }}"
+          - service: input_select.select_option
+            target:
+              entity_id: "{{ chauffage_entity }}"
+            data:
+              option: "Arret"
+
+      - conditions:
+          - condition: trigger
+            id: "fenetre_fermee"
+        sequence:
+          - delay: "00:00:03"
+          - service: input_select.select_option
+            target:
+              entity_id: "{{ chauffage_entity }}"
+            data:
+              option: "{{ states(save_mode_entity) }}"
+
+      - conditions:
+          - condition: trigger
+            id: "mode_eco"
+        sequence:
+          - service: switch.turn_on
+            target:
+              entity_id: !input switch1
+          - service: switch.turn_off
+            target:
+              entity_id: !input switch2
+
+      - conditions:
+          - condition: trigger
+            id: "mode_confort"
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: !input switch1
+          - service: switch.turn_off
+            target:
+              entity_id: !input switch2
+
+      - conditions:
+          - condition: trigger
+            id: "mode_arret"
+        sequence:
+          - service: switch.turn_on
+            target:
+              entity_id: !input switch1
+          - service: switch.turn_on
+            target:
+              entity_id: !input switch2
+
+      - conditions:
+          - condition: trigger
+            id: "mode_hors_gel"
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: !input switch1
+          - service: switch.turn_on
+            target:
+              entity_id: !input switch2
