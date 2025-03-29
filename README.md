@@ -88,6 +88,7 @@ pour la boite aux lettres:<br>
 Update 11 : résolution d'un bug pour le chip caméra , maintenant il s'affiche une fois l'alarme armée en mode absent et nuit<br>
 Update 12 : resolution de quelques bugs sur la chip card camera s'affiche avec alarmo activé en mode nuit/absent la couleur peut etre changer dans les variables de la carte, la chip alarme reste aficher quand alarmo passe a triggered (declenchée), l'icone camera passe en rouge quand alarmo est declenchée<br>
 Update 13: modification de la carte de gestion de radiateur electrique avec module zigbee mini-z1-2ch modifier avec 2 diodes , mise en place d'un blueprint pour la gestion du chauffage avec extinction a l'ouverture de la fenetre et remis en place du cycle a la fermeture avec des input_select pour la selection du mode et des input_text pour la sauvegarde du mode avant ouverture de la fenetre , modification de certaines fonctions et de visuel divers<br>
+Update 14: modification de la carte chauffage<br><br>
 Update en cour suppression de card mod<br>
 Instalation du dashboard:<br><br>
 Dans home assistant cliquer sur le crayon pour modifier le dashboard en haut à droite<br>
