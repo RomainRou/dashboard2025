@@ -1016,20 +1016,87 @@ decluttering_templates:
     card:
       type: vertical-stack
       cards:
-        - type: entity
-          entity: '[[sensor_temp]]'
-          name: 🌡 Température Actuelle
-          icon: []
         - type: horizontal-stack
           cards:
-            - type: entity
-              name: 🎛 Mode Actuel
-              icon: []
-              entity: '[[input_select]]'
-            - type: entity
-              icon: []
+            - type: custom:button-card
+              entity: '[[sensor_temp]]'
+              show_state: true
+              show_name: false
+              styles:
+                card:
+                  - box-shadow: none
+                  - display: flex
+                  - flex-direction: column
+                  - justify-content: flex-start
+                  - align-items: center
+                icon:
+                  - border-radius: 50px
+                  - width: 23px
+                  - height: 23px
+                  - padding: 8px
+                  - color: '#2196f3'
+                  - background-color: '#1d3447'
+                name:
+                  - font-size: 14px
+                  - text-align: center
+                  - font-family: Roboto
+                  - font-weight: 411
+                  - margin-top: 11px
+                state:
+                  - font-size: 12px
+                  - text-align: center
+                custom_fields:
+                  sensor:
+                    - position: absolute
+                    - font-size: 10px
+                    - font-family: Roboto
+                    - left: 47%
+                    - bottom: 0%
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              layout: vertical
+              custom_fields: null
+            - type: custom:button-card
               entity: '[[binary_sensor]]'
-              name: 🪟 Fenêtre
+              show_state: true
+              show_name: false
+              styles:
+                card:
+                  - box-shadow: none
+                  - display: flex
+                  - flex-direction: column
+                  - justify-content: flex-start
+                  - align-items: center
+                icon:
+                  - border-radius: 50px
+                  - width: 23px
+                  - height: 23px
+                  - padding: 8px
+                name:
+                  - font-size: 14px
+                  - text-align: center
+                  - font-family: Roboto
+                  - font-weight: 411
+                  - margin-top: 11px
+                state:
+                  - font-size: 12px
+                  - text-align: center
+              state:
+                - value: 'off'
+                  styles:
+                    icon:
+                      - color: '#47a24c'
+                      - background-color: '#263a27'
+                - value: 'on'
+                  styles:
+                    icon:
+                      - color: '#f44336'
+                      - background-color: '#482422'
+              tap_action:
+                action: more-info
+              layout: vertical
         - square: false
           type: grid
           columns: 4
@@ -1044,7 +1111,7 @@ decluttering_templates:
                 card:
                   - background-color: |
                       [[[
-                        return entity.state === "Confort" ? "rgba(255, 87, 67, 0.4)" : "rgba(128, 128, 128, 0.15)";
+                        return entity.state === "Confort" ? "rgba(255, 87, 67, 0.4)" : "rgba(128, 128, 128, 0)";
                       ]]]
                 icon:
                   - color: |
@@ -1071,12 +1138,12 @@ decluttering_templates:
                 card:
                   - background-color: |
                       [[[
-                        return entity.state === "Eco" ? "rgba(0, 128, 0, 0.4)" : "rgba(128, 128, 128, 0.15)";
+                        return entity.state === "Eco" ? "rgba(0, 128, 0, 0.4)" : "rgba(128, 128, 128, 0)";
                       ]]]
                 icon:
                   - color: |
                       [[[
-                        return entity.state === "Eco" ? "#008000" : "#808080";
+                        return entity.state === "Eco" ? "green" : "#808080";
                       ]]]
                   - opacity: |
                       [[[
@@ -1098,7 +1165,7 @@ decluttering_templates:
                 card:
                   - background-color: |
                       [[[
-                        return entity.state === "Hors-gel" ? "rgba(33, 150, 243, 0.4)" : "rgba(128, 128, 128, 0.15)";
+                        return entity.state === "Hors-gel" ? "rgba(33, 150, 243, 0.4)" : "rgba(128, 128, 128, 0)";
                       ]]]
                 icon:
                   - color: |
@@ -1125,12 +1192,12 @@ decluttering_templates:
                 card:
                   - background-color: |
                       [[[
-                        return entity.state === "Arret" ? "rgba(255, 255, 255, 0.4)" : "rgba(128, 128, 128, 0.15)";
+                        return entity.state === "Arret" ? "rgba(255, 255, 255, 0.4)" : "rgba(128, 128, 128, 0)";
                       ]]]
                 icon:
                   - color: |
                       [[[
-                        return entity.state === "Arret" ? "#ffffff" : "#808080";
+                        return entity.state === "Arret" ? "white" : "#808080";
                       ]]]
                   - opacity: |
                       [[[
